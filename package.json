@@ -1,0 +1,23 @@
+{
+  "name": "stats-tasktics",
+  "version": "1.0.0",
+  "description": "A task manager with statistical analysis using a MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jacob-Aston/stats-tasktics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jacob-Aston/stats-tasktics/issues"
+  },
+  "homepage": "https://github.com/Jacob-Aston/stats-tasktics#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
