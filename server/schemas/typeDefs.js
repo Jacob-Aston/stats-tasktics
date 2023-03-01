@@ -23,8 +23,9 @@ const typeDefs = gql`
 
     type List {
         _id: ID
+        listTitle: String
         taskRefreshDay: String
-        task: Task
+        task: [Task]
     }
 
     type Task {
@@ -39,7 +40,10 @@ const typeDefs = gql`
         users: [User]
         user(userId: ID!): User
         me: User
-        lists(email: String): [List]
+        lists: [List]
+    }
+    type Mutation {
+        addList(email: String!, listTitle: String!, taskRefreshDay: String!): List
     }
 `
 

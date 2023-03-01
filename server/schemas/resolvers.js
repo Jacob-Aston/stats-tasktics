@@ -8,7 +8,7 @@ const resolvers = {
         //user should only get their own data (me)
         users: async() => 
         { 
-            return User.find();
+            return User.find().populate('lists');
         },
         //this function should not be called
         //user should only get their own data (me)
@@ -23,13 +23,22 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in')
         },
-        lists: async(parent, {email}) =>
+        lists: async(parent, {id}) =>
         {
-            const params = email ? {email} : {};
+            const params = id ? {id} : {};
             return List.find(params);
         }
 
     },
+    Mutation: {
+        addList: async(parent, {email, listTitle,taskRefreshDay }) =>
+        {
+            const list = await List.create({listTitle, taskRefreshDay});
+            await User.findOneAndUpdate({email: email}, 
+            {$addToSet: {lists: list._id}});
+            return list;
+        }
+    }
     
 };
 
