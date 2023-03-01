@@ -69,13 +69,18 @@ function SignIn() {
             justifyContent="center"
             alignItems="center"
           >
-            <Paper elevation={3}>
+            <Paper elevation={3} sx={{ bgcolor: 'secondary.main' }}>
               <Grid item margin={2}>
-                <Typography variant="h3" component="h1" textAlign={'center'}>
+                <Typography
+                  variant="h3"
+                  component="h1"
+                  textAlign={'center'}
+                  sx={{ color: 'primary.dark' }}
+                >
                   Sign In
                 </Typography>
               </Grid>
-              <Grid item margin={2}>
+              <Grid item margin={2} sx={{ bgcolor: 'secondary.light' }}>
                 <TextField
                   id="filled-basic"
                   label="Email"
@@ -83,7 +88,7 @@ function SignIn() {
                   required="true"
                 />
               </Grid>
-              <Grid item margin={2}>
+              <Grid item margin={2} sx={{ bgcolor: 'secondary.light' }}>
                 <TextField
                   id="filled-basic"
                   label="Password"
