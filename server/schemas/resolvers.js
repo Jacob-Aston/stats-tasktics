@@ -6,15 +6,15 @@ const resolvers = {
     Query: {
         //this function should not be called
         //user should only get their own data (me)
-        Users: async() => 
+        users: async() => 
         { 
             return Users.find();
         },
         //this function should not be called
         //user should only get their own data (me)
-        User:  async(parent, {userId}) =>
+        user:  async(parent, {userId}) =>
         {
-            return Users.findOne({_id:userId});
+            return User.findOne({_id:userId});
         },
         me: async(parent,args,context) =>
         {
@@ -23,7 +23,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in')
         },
-        Lists: async(parent, {email}) =>
+        lists: async(parent, {email}) =>
         {
             const params = email ? {email} : {};
             return List.find(params);
@@ -33,4 +33,4 @@ const resolvers = {
     
 };
 
-module.exports resolvers;
+module.exports = resolvers;
