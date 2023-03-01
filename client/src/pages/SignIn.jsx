@@ -2,6 +2,14 @@ import React from "react";
 // import Container from "@mui/material/Container";
 import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
+import logo from "../images/logo.png";
+
+const style = {
+	img: {
+		width: "192px",
+		height: "192px",
+	},
+};
 
 const buttonTheme = createTheme({
 	palette: {
@@ -11,6 +19,14 @@ const buttonTheme = createTheme({
 	},
 });
 
+// const topTheme = createTheme({
+// 	palette: {
+// 		background: {
+// 			default: "#2C3531",
+// 		},
+// 	},
+// });
+
 function SignIn() {
 	return (
 		<Grid
@@ -19,7 +35,9 @@ function SignIn() {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Grid item>{/* <img src="" /> */}</Grid>
+			<Grid item>
+				<img alt="stat-tasktic logo" style={style.img} src={logo} />
+			</Grid>
 			<Grid item>
 				<Typography>Stat-tasktic</Typography>
 			</Grid>
