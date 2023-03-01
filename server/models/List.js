@@ -8,7 +8,7 @@ const listSchema = new Schema(
             required: true,
             unique: false,
             trim: true,
-            match:  [/(Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday)/, 'Must match a day of the week!']
+            match:  [/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/, 'Must match a day of the week!']
         },
 
         task: [
