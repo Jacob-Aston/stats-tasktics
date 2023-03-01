@@ -2,6 +2,11 @@ const {Schema, model} = require('mongoose');
 
 const listSchema = new Schema(
     {
+        listTitle: {
+            type: String,
+            required: true,
+            unique: false
+        },
         //this is the day of the week that tasks will go from complete to incomplete and new tasks will be created
         taskRefreshDay: {
             type: String,
