@@ -8,7 +8,7 @@ const resolvers = {
         //user should only get their own data (me)
         users: async() => 
         { 
-            return Users.find();
+            return User.find();
         },
         //this function should not be called
         //user should only get their own data (me)
@@ -19,7 +19,7 @@ const resolvers = {
         me: async(parent,args,context) =>
         {
             if(context.user) {
-                return Users.findOne({_id:userId});
+                return User.findOne({_id:userId});
             }
             throw new AuthenticationError('You need to be logged in')
         },
