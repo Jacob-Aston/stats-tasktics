@@ -1,9 +1,11 @@
 [
     {
+        "listTitle": "Chores",
         "taskRefreshDay": "Sunday",
         "task": []
     },
     {
+        "listTitle": "Plants",
         "taskRefreshDay": "Monday",
         "task": []
     }
