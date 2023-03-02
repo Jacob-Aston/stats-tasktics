@@ -1,23 +1,15 @@
 import React from "react";
 // import Container from "@mui/material/Container";
-import {
-	Grid,
-	Paper,
-	Typography,
-	TextField,
-	Button,
-	Box,
-	Stack,
-} from "@mui/material";
+import { Grid, Paper, Typography, TextField, Button, Box } from "@mui/material";
 // import { createTheme, ThemeProvider } from "@mui/material";
-import logo from "../images/logo.png";
+import logo from "../images/stats_logo.png";
 
-const styles = {
-	img: {
-		width: "250px",
-		height: "250px",
-	},
-};
+// const styles = {
+// 	img: {
+// 		width: "400px",
+// 		height: "400px",
+// 	},
+// };
 
 // const buttonTheme = createTheme({
 // 	palette: {
@@ -43,11 +35,9 @@ function SignIn() {
 			justifyContent="center"
 			alignItems="center"
 		>
-			{/* <Grid item>
-				<img alt="stat-tasktic logo" style={styles.img} src={logo} />
-			</Grid> */}
+			{/* <Grid item><img alt="stat-tasktic logo" src={logo} /></Grid> */}
 			<Grid item>
-				<Typography variant="h3" component="h1">
+				<Typography variant="h3" component="h1" color="black">
 					Stat-tasktic
 				</Typography>
 			</Grid>
@@ -81,10 +71,13 @@ function SignIn() {
 					<Box marginY={3} paddingY={3} align="center">
 						<Button
 							variant="contained"
-							sx={{ backgroundColor: "default.darkBlue" }}
+							sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 						>
 							Submit
 						</Button>
+					</Box>
+					<Box>
+						<Typography></Typography>
 					</Box>
 				</Paper>
 			</Grid>

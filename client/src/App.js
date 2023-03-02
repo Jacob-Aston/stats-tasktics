@@ -44,6 +44,11 @@ const client = new ApolloClient({
 });
 
 const theme = createTheme({
+	typography: {
+		allVariants: {
+			color: "#2C3531",
+		},
+	},
 	palette: {
 		// mode: "dark",
 		background: {
