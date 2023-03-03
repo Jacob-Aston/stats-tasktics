@@ -1,16 +1,7 @@
 import React from 'react';
-import {
-  Grid,
-  Paper,
-  Typography,
-  TextField,
-  Button,
-  Box,
-  Link,
-  Tabs,
-  Tab,
-} from '@mui/material';
+import { Grid, Paper, Typography, Box, Tabs, Tab } from '@mui/material';
 import logo from '../images/statslogoph.png';
+import BarChart from '../charts/Bar';
 
 const styles = {
   img: {
@@ -22,6 +13,7 @@ const styles = {
 
 function Stats() {
   return (
+    // container for the entire page
     <Grid
       container
       direction="column"
@@ -37,6 +29,7 @@ function Stats() {
         </Typography>
       </Grid>
       <Grid item xs={1} marginY={4} marginX={1}>
+        {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
           <Grid
             container
@@ -47,50 +40,12 @@ function Stats() {
           >
             {/* This is the tabs for Stats and Tasks  */}
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value="Tabs" variant="fullWidth">
-                <Tab label="Stats" />
-                <Tab label="Tasks" href="/tasks" />
+              <Tabs value="Stats" variant="fullWidth">
+                <Tab label="Stats" value="Stats" />
+                <Tab label="Tasks" value="Tasks" href="/tasks" />
               </Tabs>
             </Box>
-            <Box margin={1} paddingY={2}>
-              <Typography variant="h4" component="h2" textAlign={'center'}>
-                Sign In
-              </Typography>
-            </Box>
-            <Box margin={3}>
-              <TextField
-                id="filled-basic"
-                label="Email"
-                variant="filled"
-                required="true"
-                color="info"
-                sx={{ backgroundColor: 'default.blue' }}
-              />
-            </Box>
-            <Box margin={1}>
-              <TextField
-                id="filled-basic"
-                label="Password"
-                variant="filled"
-                required="true"
-                color="info"
-                align="center"
-                sx={{ backgroundColor: 'default.blue' }}
-              />
-            </Box>
-            <Box marginY={3} paddingTop={2} align="center">
-              <Button
-                variant="contained"
-                sx={{ backgroundColor: 'default.gray', color: 'default.blue' }}
-              >
-                Submit
-              </Button>
-            </Box>
-            <Box padding={2} marginBottom={2} textAlign="center">
-              <Link href="#" underline="hover">
-                {"Don't have an account? Sign up here"}
-              </Link>
-            </Box>
+            <BarChart />
           </Grid>
         </Paper>
       </Grid>
