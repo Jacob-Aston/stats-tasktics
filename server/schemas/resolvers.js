@@ -45,10 +45,10 @@ const resolvers = {
             {$addToSet: {lists: list._id}});
             return list;
         },
-        addTask: async (parent,{id, taskTitle, taskDescription, dueDate}) =>
+        addTask: async (parent,{id: listId, taskTitle, taskDescription, dueDate}) =>
         {
             const task = await Task.create({title: taskTitle, description: taskDescription, dueDate: dueDate});
-            await List.findOneAndUpdate({id}, {$addToSet: {tasks: task._id}});
+            await List.findOneAndUpdate({id: listId}, {$addToSet: {tasks: task._id}});
             return task;
         }
     }
