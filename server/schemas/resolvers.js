@@ -50,10 +50,10 @@ const resolvers = {
             {$addToSet: {lists: list._id}});
             return list;
         },
-        addTask: async (parent,{id: listId, taskTitle, taskDescription, dueDate}) =>
+        addTask: async (parent,{ listId, taskTitle, taskDescription, dueDate}) =>
         {
             const task = await Task.create({title: taskTitle, description: taskDescription, dueDate: dueDate});
-            await List.findOneAndUpdate({id: listId}, {$addToSet: {tasks: task._id}});
+             await List.findOneAndUpdate({_id: listId}, {$addToSet: {tasks: task._id}});
             return task;
         },
         updateUser: async (parent, {email, username, password}) =>
@@ -81,7 +81,18 @@ const resolvers = {
                 }, {new:true}
             );
             return newTask;
-        }
+        },
+        updateList: async (parent, {id, listTitle, taskRefreshDay}) =>
+        {
+            const list = await List.findOne({id});
+            const newList = await List.findByIdAndUpdate({id: id},
+                {...list,
+                    listTitle: listTitle ? listTitle : list.listTitle,
+                    taskRefreshDay: taskRefreshDay ? taskRefreshDay : list.taskRefreshDay
+                }
+            );
+            return newList;
+        },
     },
     
     
