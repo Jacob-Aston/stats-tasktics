@@ -5,7 +5,7 @@ const data = {
   datasets: [
     {
       data: [4, 6],
-      backgroundColor: ['Info', 'Danger'],
+      backgroundColor: ['Green', 'Red'],
     },
   ],
 };
@@ -18,7 +18,8 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Bar Chart',
+      text: 'Completion Time',
+      color: '#2C3531',
     },
   },
 };
@@ -26,8 +27,7 @@ const options = {
 function BarChart() {
   return (
     <div>
-      <h2>Bar Chart</h2>
-      <Bar id="bar" options={options} data={data} />;
+      <Bar id="bar" options={options} data={data} />
     </div>
   );
 }

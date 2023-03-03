@@ -3,6 +3,9 @@ import { Grid, Paper, Typography, Box, Tabs, Tab } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import BarChart from '../charts/Bar';
 
+// this makes the charts show up. Do not remove this. 
+import Chart from 'chart.js/auto';
+
 const styles = {
   img: {
     width: '95px',
