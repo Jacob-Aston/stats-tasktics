@@ -16,7 +16,7 @@ const listSchema = new Schema(
             match:  [/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/, 'Must match a day of the week!']
         },
 
-        task: [
+        tasks: [
             {
             type: Schema.Types.ObjectId,
             ref: 'Task'
