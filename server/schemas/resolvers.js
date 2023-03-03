@@ -28,7 +28,7 @@ const resolvers = {
         lists: async(parent, {id}) =>
         {
             const params = id ? {id} : {};
-            return List.find(params);
+            return List.find(params).populate({path: 'tasks'});
         },
         tasks: async(parent, {id}) =>
         {
