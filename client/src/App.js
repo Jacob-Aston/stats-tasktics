@@ -8,6 +8,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
 // import { createTheme, ThemeProvider } from "@mui/material";
 
@@ -42,32 +43,54 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-// const theme = createTheme({});
+const theme = createTheme({
+	typography: {
+		allVariants: {
+			color: "#2C3531",
+		},
+	},
+	palette: {
+		// mode: "dark",
+		background: {
+			default: "#116466",
+		},
+		default: {
+			gray: "#2C3531",
+			darkBlue: "#116466",
+			blue: "#D1E8E2",
+			darkTan: "#D9B08C",
+			tan: "#FFCD9A",
+		},
+	},
+});
 
 function App() {
 	return (
 		<ApolloProvider client={client}>
-			<Router>
-				<div className="flex-column justify-flex-start min-100-vh">
-					<div className="container">
-						<Routes>
-							{/* <Route 
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Router>
+					<div className="flex-column justify-flex-start min-100-vh">
+						<div className="container">
+							<Routes>
+								{/* <Route 
                 path="/" 
                 element={<Home />} 
               /> */}
-							<Route path="/signin" element={<SignIn />} />
-							{/* <Route 
+								<Route path="/signin" element={<SignIn />} />
+								{/* <Route 
                 path="/signup" 
                 element={<Signup />} 
               /> */}
-							{/* <Route 
+								{/* <Route 
                 path="/thoughts/:thoughtId" 
                 element={<SingleThought />} 
               /> */}
-						</Routes>
+							</Routes>
+						</div>
 					</div>
-				</div>
-			</Router>
+				</Router>
+			</ThemeProvider>
 		</ApolloProvider>
 	);
 }

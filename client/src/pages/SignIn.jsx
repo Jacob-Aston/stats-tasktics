@@ -1,23 +1,32 @@
 import React from "react";
 // import Container from "@mui/material/Container";
-import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material";
-import logo from "../images/logo.png";
+import {
+	Grid,
+	Paper,
+	Typography,
+	TextField,
+	Button,
+	Box,
+	Link,
+} from "@mui/material";
+// import { createTheme, ThemeProvider } from "@mui/material";
+import logo from "../images/statslogoph.png";
 
-const style = {
+const styles = {
 	img: {
-		width: "192px",
-		height: "192px",
+		width: "95px",
+		height: "145px",
+		paddingTop: "20px",
 	},
 };
 
-const buttonTheme = createTheme({
-	palette: {
-		primary: {
-			main: "#116466",
-		},
-	},
-});
+// const buttonTheme = createTheme({
+// 	palette: {
+// 		primary: {
+// 			main: "#116466",
+// 		},
+// 	},
+// });
 
 // const topTheme = createTheme({
 // 	palette: {
@@ -31,53 +40,68 @@ function SignIn() {
 	return (
 		<Grid
 			container
-			direction="Column"
+			direction="column"
 			justifyContent="center"
 			alignItems="center"
 		>
 			<Grid item>
-				<img alt="stat-tasktic logo" style={style.img} src={logo} />
+				<img alt="stat-tasktic logo" style={styles.img} src={logo} />
 			</Grid>
 			<Grid item>
-				<Typography>Stat-tasktic</Typography>
+				<Typography variant="h3" component="h1" color="black">
+					Stat-tasktic
+				</Typography>
 			</Grid>
-			<Grid item xs={10}>
-				<Grid
-					container
-					item
-					direction="column"
-					justifyContent="center"
-					alignItems="center"
-				>
-					<Paper elevation={3}>
-						<Grid item margin={2}>
-							<Typography variant="h3" component="h1" textAlign={"center"}>
+			<Grid item xs={1} marginY={4} marginX={1}>
+				<Paper elevation={7} sx={{ backgroundColor: "default.tan" }}>
+					<Grid
+						container
+						item
+						direction="column"
+						justifyContent="center"
+						alignItems="center"
+					>
+						<Box margin={1} paddingY={2}>
+							<Typography variant="h4" component="h2" textAlign={"center"}>
 								Sign In
 							</Typography>
-						</Grid>
-						<Grid item margin={2}>
+						</Box>
+						<Box margin={3}>
 							<TextField
 								id="filled-basic"
 								label="Email"
 								variant="filled"
 								required="true"
+								color="info"
+								sx={{ backgroundColor: "default.blue" }}
 							/>
-						</Grid>
-						<Grid item margin={2}>
+						</Box>
+						<Box margin={1}>
 							<TextField
 								id="filled-basic"
 								label="Password"
 								variant="filled"
 								required="true"
+								color="info"
+								align="center"
+								sx={{ backgroundColor: "default.blue" }}
 							/>
-						</Grid>
-						<Grid item margin={2} align="center">
-							<ThemeProvider theme={buttonTheme}>
-								<Button variant="contained">Submit</Button>
-							</ThemeProvider>
-						</Grid>
-					</Paper>
-				</Grid>
+						</Box>
+						<Box marginY={3} paddingTop={2} align="center">
+							<Button
+								variant="contained"
+								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
+							>
+								Submit
+							</Button>
+						</Box>
+						<Box padding={2} marginBottom={2} textAlign="center">
+							<Link href="#" underline="hover">
+								{"Don't have an account? Sign up here"}
+							</Link>
+						</Box>
+					</Grid>
+				</Paper>
 			</Grid>
 		</Grid>
 	);
