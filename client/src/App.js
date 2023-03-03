@@ -15,11 +15,9 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 // import Home from './pages/Home';
 // import Signup from './pages/Signup';
 
-
-
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import TaskCreate from "./pages/TaskCreate";
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import TaskCreate from './pages/TaskCreate';
 
 // import SingleThought from './pages/SingleThought';
 import Stats from './pages/Stats';
@@ -49,27 +47,25 @@ const client = new ApolloClient({
 });
 
 const theme = createTheme({
-
-	typography: {
-		allVariants: {
-			color: "#2C3531",
-		},
-	},
-	palette: {
-		// mode: "dark",
-		background: {
-			default: "#116466",
-		},
-		default: {
-			gray: "#2C3531",
-			darkBlue: "#116466",
-			blue: "#D1E8E2",
-			darkTan: "#D9B08C",
-			tan: "#FFCD9A",
-			alert: "#ff6961",
-		},
-	},
-
+  typography: {
+    allVariants: {
+      color: '#2C3531',
+    },
+  },
+  palette: {
+    // mode: "dark",
+    background: {
+      default: '#116466',
+    },
+    default: {
+      gray: '#2C3531',
+      darkBlue: '#116466',
+      blue: '#D1E8E2',
+      darkTan: '#D9B08C',
+      tan: '#FFCD9A',
+      alert: '#ff6961',
+    },
+  },
 });
 
 function App() {
@@ -85,9 +81,9 @@ function App() {
                 path="/" 
                 element={<Home />} 
               /> */}
-                <Route path="/signin" element={<SignIn />} />
+                <Route path="/" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-				<Route path="/taskcreate" element={<TaskCreate />} />
+                <Route path="/taskcreate" element={<TaskCreate />} />
                 <Route path="/stats" element={<Stats />} />
               </Routes>
             </div>
@@ -96,7 +92,6 @@ function App() {
       </ThemeProvider>
     </ApolloProvider>
   );
-
 }
 
 export default App;
