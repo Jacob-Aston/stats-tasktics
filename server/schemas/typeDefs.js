@@ -36,11 +36,17 @@ const typeDefs = gql`
         tasks: [Task]
     }
     type Mutation {
+        addUser(email: String!, username: String!, password: String!): User
+
         addList(email: String!, listTitle: String!, taskRefreshDay: String!): List
 
         addTask(listId: ID!, taskTitle: String! taskDescription: String, dueDate: String!, startTime: Date, finishTime: Date): Task
+        
+        updateUser(email: String!, username: String, password: String): User
 
         updateTask(taskId: ID! , taskTitle: String ,taskDescription: String, dueDate: String, startTime: Date, finishTime: Date): Task
+
+        updateList(id: ID!, listTitle: String, taskRefreshDay: String): List
     }
 `
 
