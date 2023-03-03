@@ -28,6 +28,11 @@ const typeDefs = gql`
         finishTime: Date
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         users: [User]
         user(userId: ID!): User
@@ -37,6 +42,8 @@ const typeDefs = gql`
     }
     type Mutation {
         addUser(email: String!, username: String!, password: String!): User
+
+        login(email: String!, password: String!): Auth
 
         addList(email: String!, listTitle: String!, taskRefreshDay: String!): List
 
