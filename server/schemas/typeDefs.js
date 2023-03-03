@@ -38,7 +38,9 @@ const typeDefs = gql`
     type Mutation {
         addList(email: String!, listTitle: String!, taskRefreshDay: String!): List
 
-        addTask(listId: ID!, taskTitle: String! taskDescription: String, dueDate: String): Task
+        addTask(listId: ID!, taskTitle: String! taskDescription: String, dueDate: String!, startTime: Date, finishTime: Date): Task
+
+        updateTask(taskId: ID! , taskTitle: String ,taskDescription: String, dueDate: String, startTime: Date, finishTime: Date): Task
     }
 `
 

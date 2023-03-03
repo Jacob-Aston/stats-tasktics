@@ -50,8 +50,24 @@ const resolvers = {
             const task = await Task.create({title: taskTitle, description: taskDescription, dueDate: dueDate});
             await List.findOneAndUpdate({id: listId}, {$addToSet: {tasks: task._id}});
             return task;
+        },
+        updateTask: async (parent, {id: taskId, title: taskTitle, description: taskDescription, dueDate: dueDate, startTime: startTime, finishTime: finishTime}) => 
+        {
+            const task = await Task.findOne({taskId});
+            const newTask = await Task.findOneAndUpdate({taskId: task.id},
+                {...task,
+                    title: taskTitle ? taskTitle : task.title,
+                    description: taskDescription ? taskDescription : task.description,
+                    dueDate: dueDate ? dueDate : task.dueDate,
+                    startTime: startTime ? startTime : task.startTime,
+                    finishTime: finishTime ? finishTime : task.finishTime
+
+                }, {new:true}
+            );
+            return newTask;
         }
-    }
+    },
+    
     
 };
 
