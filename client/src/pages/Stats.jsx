@@ -20,8 +20,6 @@ const styles = {
   },
 };
 
-const handleChange = function () {};
-
 function Stats() {
   return (
     <Grid
@@ -49,9 +47,9 @@ function Stats() {
           >
             {/* This is the tabs for Stats and Tasks  */}
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value="Tabs" onChange={handleChange} variant="fullWidth">
+              <Tabs value="Tabs" variant="fullWidth">
                 <Tab label="Stats" />
-                <Tab label="Tasks" />
+                <Tab label="Tasks" href="/tasks" />
               </Tabs>
             </Box>
             <Box margin={1} paddingY={2}>
