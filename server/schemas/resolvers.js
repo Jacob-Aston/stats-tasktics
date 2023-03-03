@@ -10,7 +10,7 @@ const resolvers = {
         //user should only get their own data (me)
         users: async() => 
         { 
-            return User.find().populate('lists');
+            return User.find().populate({path: 'lists', populate: {path: 'tasks'}});
         },
         //this function should not be called
         //user should only get their own data (me)
@@ -38,6 +38,11 @@ const resolvers = {
 
     },
     Mutation: {
+        addUser: async(parent, {email, username, password}) => 
+        {
+            const user = await User.create({email, username, password});
+            return user;
+        },
         addList: async(parent, {email, listTitle,taskRefreshDay }) =>
         {
             const list = await List.create({listTitle, taskRefreshDay});
@@ -50,6 +55,17 @@ const resolvers = {
             const task = await Task.create({title: taskTitle, description: taskDescription, dueDate: dueDate});
             await List.findOneAndUpdate({id: listId}, {$addToSet: {tasks: task._id}});
             return task;
+        },
+        updateUser: async (parent, {email, username, password}) =>
+        {
+            const user = await User.findOne({email});
+            const newUser = await User.findOneAndUpdate({email: email},
+                {...user,
+                    username: username ? username : user.username,
+                    password: password ? password : user.password
+                }
+            );
+            return newUser;
         },
         updateTask: async (parent, {id: taskId, title: taskTitle, description: taskDescription, dueDate: dueDate, startTime: startTime, finishTime: finishTime}) => 
         {
