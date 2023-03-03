@@ -8,7 +8,8 @@ class AuthService {
 
     getToken()
     {
-        return localStorage.getItem(this.#tokenName);
+        const token = localStorage.getItem(this.#tokenName);
+        return this.isTokenExpired(token) ? null : token;
     }
 
     login(token)
@@ -37,7 +38,7 @@ class AuthService {
         //if experation time is greater than current time token is still vaild
         if(decoded.exp > (Date.now() / 1000)) return false;
         //if experation time is passed then remove the token and return true
-        localStorage.removeItem(this.#tokenName);
+        this.logout()
         return true;
     }
 }
