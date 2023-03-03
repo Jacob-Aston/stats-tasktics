@@ -43,13 +43,11 @@ function SignIn() {
 		if (!validateEmail(email)) {
 			setErrorMessage("Email or password is invalid");
 			return;
-
 		}
 		if (!checkPassword(password)) {
 			setErrorMessage(`Email or password is invalid`);
 			return;
 		}
-
 
 		setPassword("");
 		setEmail("");

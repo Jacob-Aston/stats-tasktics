@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 // import Signup from './pages/Signup';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import TaskCreate from "./pages/TaskCreate";
 
 // import SingleThought from './pages/SingleThought';
 // import Header from './components/Header';
@@ -82,6 +83,7 @@ function App() {
               /> */}
 								<Route path="/signin" element={<SignIn />} />
 								<Route path="/signup" element={<SignUp />} />
+								<Route path="/taskcreate" element={<TaskCreate />} />
 								{/* <Route 
                 path="/thoughts/:thoughtId" 
                 element={<SingleThought />} 
