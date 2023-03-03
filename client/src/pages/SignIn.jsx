@@ -1,5 +1,4 @@
-import React from "react";
-// import Container from "@mui/material/Container";
+import React, { useState } from "react";
 import {
 	Grid,
 	Paper,
@@ -8,8 +7,9 @@ import {
 	Button,
 	Box,
 	Link,
+	Alert,
 } from "@mui/material";
-// import { createTheme, ThemeProvider } from "@mui/material";
+import { checkPassword, validateEmail } from "../utils/helpers";
 import logo from "../images/statslogoph.png";
 
 const styles = {
@@ -20,23 +20,41 @@ const styles = {
 	},
 };
 
-// const buttonTheme = createTheme({
-// 	palette: {
-// 		primary: {
-// 			main: "#116466",
-// 		},
-// 	},
-// });
-
-// const topTheme = createTheme({
-// 	palette: {
-// 		background: {
-// 			default: "#2C3531",
-// 		},
-// 	},
-// });
-
 function SignIn() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const handleInputChange = (e) => {
+		const { target } = e;
+		const inputType = target.name;
+		const inputValue = target.value;
+
+		if (inputType === "email") {
+			setEmail(inputValue);
+		} else {
+			setPassword(inputValue);
+		}
+	};
+
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+
+		if (!validateEmail(email)) {
+			setErrorMessage("Email or password is invalid");
+			return;
+
+		}
+		if (!checkPassword(password)) {
+			setErrorMessage(`Email or password is invalid`);
+			return;
+		}
+
+
+		setPassword("");
+		setEmail("");
+	};
+
 	return (
 		<Grid
 			container
@@ -51,6 +69,18 @@ function SignIn() {
 				<Typography variant="h3" component="h1" color="black">
 					Stat-tasktic
 				</Typography>
+			</Grid>
+			<Grid item marginTop={2} marginX={2}>
+				{errorMessage && (
+					<Alert
+						severity="error"
+						sx={{ backgroundColor: "default.alert", color: "default.blue" }}
+					>
+						<Typography color="default.blue" className="error-text">
+							{errorMessage}
+						</Typography>
+					</Alert>
+				)}
 			</Grid>
 			<Grid item xs={1} marginY={4} marginX={1}>
 				<Paper elevation={7} sx={{ backgroundColor: "default.tan" }}>
@@ -68,6 +98,10 @@ function SignIn() {
 						</Box>
 						<Box margin={3}>
 							<TextField
+								value={email}
+								name="email"
+								onChange={handleInputChange}
+								type="email"
 								id="filled-basic"
 								label="Email"
 								variant="filled"
@@ -78,6 +112,10 @@ function SignIn() {
 						</Box>
 						<Box margin={1}>
 							<TextField
+								value={password}
+								name="password"
+								onChange={handleInputChange}
+								type="password"
 								id="filled-basic"
 								label="Password"
 								variant="filled"
@@ -89,6 +127,7 @@ function SignIn() {
 						</Box>
 						<Box marginY={3} paddingTop={2} align="center">
 							<Button
+								onClick={handleFormSubmit}
 								variant="contained"
 								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 							>
@@ -96,7 +135,7 @@ function SignIn() {
 							</Button>
 						</Box>
 						<Box padding={2} marginBottom={2} textAlign="center">
-							<Link href="#" underline="hover">
+							<Link href="/signup" underline="hover">
 								{"Don't have an account? Sign up here"}
 							</Link>
 						</Box>

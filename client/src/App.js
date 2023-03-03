@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 // import Home from './pages/Home';
 // import Signup from './pages/Signup';
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+
 // import SingleThought from './pages/SingleThought';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -60,6 +62,7 @@ const theme = createTheme({
 			blue: "#D1E8E2",
 			darkTan: "#D9B08C",
 			tan: "#FFCD9A",
+			alert: "#ff6961",
 		},
 	},
 });
@@ -78,10 +81,7 @@ function App() {
                 element={<Home />} 
               /> */}
 								<Route path="/signin" element={<SignIn />} />
-								{/* <Route 
-                path="/signup" 
-                element={<Signup />} 
-              /> */}
+								<Route path="/signup" element={<SignUp />} />
 								{/* <Route 
                 path="/thoughts/:thoughtId" 
                 element={<SingleThought />} 
