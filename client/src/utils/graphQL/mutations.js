@@ -86,8 +86,8 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
       password
       username
     }
-  }';
-`
+  }`;
+
 
 /**
  * this mutation takes the list id and updates the list associated with that id with the provided
