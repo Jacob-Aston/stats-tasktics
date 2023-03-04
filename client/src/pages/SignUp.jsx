@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {CREATE_USER} from '../utils/graphQL/mutations.js';
+import { useMutation } from '@apollo/client';
 
 import {
 	Grid,
@@ -26,6 +28,9 @@ function SignUp() {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const [createUser, {error}] = useMutation(CREATE_USER);
+
+
 
 	const handleInputChange = (e) => {
 	
@@ -43,7 +48,7 @@ function SignUp() {
 		}
 	};
 
-	const handleFormSubmit = (e) => {
+	const handleFormSubmit = async (e) => {
 
 		e.preventDefault();
 
@@ -60,6 +65,23 @@ function SignUp() {
 			);
 			return;
 		}
+
+		try {
+			console.log(`creating user with ${userName}, ${email}, and ${password}`);
+			const {data} = await createUser({
+				variables: {
+					email,
+					username: userName,
+					password
+				}
+			});
+			console.log({data});
+		}
+		catch(err){
+			console.log("ran into an error");
+			console.error(err);
+		}
+		
 
 		setUserName("");
 		setPassword("");
@@ -116,7 +138,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Username"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}
@@ -131,7 +153,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Email"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								sx={{ backgroundColor: "default.blue" }}
 							/>
@@ -145,7 +167,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Password"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}

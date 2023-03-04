@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { checkPassword, validateEmail } from "../utils/helpers";
 import logo from "../images/statslogoph.png";
+import {LOGIN} from '../utils/graphQL/mutations.js';
+import { useMutation } from '@apollo/client';
 
 const styles = {
 	img: {
@@ -24,6 +26,7 @@ function SignIn() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const [login, {error}] = useMutation(LOGIN);
 
 	const handleInputChange = (e) => {
 		const { target } = e;
@@ -37,7 +40,7 @@ function SignIn() {
 		}
 	};
 
-	const handleFormSubmit = (e) => {
+	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 
 		if (!validateEmail(email)) {
@@ -48,6 +51,18 @@ function SignIn() {
 			setErrorMessage(`Email or password is invalid`);
 			return;
 		}
+
+		try{
+			const {data} = await login({variables: 
+				{email, password}
+			});
+			console.log({data});
+		}
+		catch(err)
+		{
+			console.error(err);
+		}
+		
 
 		setPassword("");
 		setEmail("");
@@ -103,7 +118,7 @@ function SignIn() {
 								id="filled-basic"
 								label="Email"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								sx={{ backgroundColor: "default.blue" }}
 							/>
@@ -117,7 +132,7 @@ function SignIn() {
 								id="filled-basic"
 								label="Password"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}
