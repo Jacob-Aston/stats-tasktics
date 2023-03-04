@@ -41,12 +41,12 @@ mutation Mutation($email: String!, $password: String!) {
   */
 export const CREATE_USER = gql`
 mutation Mutation($email: String!, $username: String!, $password: String!) {
-    addUser(email: $email, username: $username, password: $password) {
-      _id
-      email
-      username
-    }
-  }`
+  addUser(email: $email, username: $username, password: $password) {
+    _id
+    email
+    username
+  }
+}`
 
   /**
    * this mutation creates a list with the specified title and refresh day, adds it to the user with the specified email associated with their account (assumed to be the current user)
