@@ -12,6 +12,9 @@ class AuthService {
         return this.isTokenExpired(token) ? null : token;
     }
 
+    /**
+     * after running the login mutation, store the token and go to the home page
+     */
     login(token)
     {
         localStorage.setItem(this.#tokenName, token);
