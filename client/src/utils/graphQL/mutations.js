@@ -41,7 +41,7 @@ mutation Mutation($email: String!, $password: String!) {
   */
 export const CREATE_USER = gql`
 mutation Mutation($email: String!, $username: String!, $password: String!) {
-  addUser(email: $email, username: $username, password: $password) {
+addUser(email: $email, username: $username, password: $password) {
     _id
     email
     username
@@ -53,7 +53,7 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
   */
   export const CREATE_LIST = gql`
   mutation Mutation($email: String!, $listTitle: String!, $taskRefreshDay: String!) {
-    addList(email: $email, listTitle: $listTitle, taskRefreshDay: $taskRefreshDay) {
+  addList(email: $email, listTitle: $listTitle, taskRefreshDay: $taskRefreshDay) {
       _id
       listTitle
       taskRefreshDay
@@ -66,7 +66,7 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
    */
   export const CREATE_TASK = gql`
   mutation Mutation($listId: ID!, $taskTitle: String!, $dueDate: String!, $taskDescription: String) {
-    addTask(listId: $listId, taskTitle: $taskTitle, dueDate: $dueDate, taskDescription: $taskDescription) {
+  addTask(listId: $listId, taskTitle: $taskTitle, dueDate: $dueDate, taskDescription: $taskDescription) {
       _id
       title
       description
@@ -80,7 +80,7 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
    */
   export const UPDATE_USER = gql`
   mutation Mutation($email: String!, $username: String, $password: String) {
-    updateUser(email: $email, username: $username, password: $password) {
+  updateUser(email: $email, username: $username, password: $password) {
       _id
       email
       password
@@ -97,7 +97,7 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
  */
   export const UPDATE_lIST = gql`
   mutation Mutation($updateListId: ID!, $listTitle: String, $taskRefreshDay: String) {
-    updateList(id: $updateListId, listTitle: $listTitle, taskRefreshDay: $taskRefreshDay) {
+  updateList(id: $updateListId, listTitle: $listTitle, taskRefreshDay: $taskRefreshDay) {
       _id
       listTitle
       taskRefreshDay
@@ -110,7 +110,7 @@ mutation Mutation($email: String!, $username: String!, $password: String!) {
    */
   export const UPDATE_TASK = gql`
   mutation Mutation($taskId: ID!, $taskTitle: String, $taskDescription: String, $dueDate: String, $startTime: Date, $finishTime: Date) {
-    updateTask(taskId: $taskId, taskTitle: $taskTitle, taskDescription: $taskDescription, dueDate: $dueDate, startTime: $startTime, finishTime: $finishTime) {
+  updateTask(taskId: $taskId, taskTitle: $taskTitle, taskDescription: $taskDescription, dueDate: $dueDate, startTime: $startTime, finishTime: $finishTime) {
       _id
       description
       dueDate
