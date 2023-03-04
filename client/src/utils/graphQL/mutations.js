@@ -8,29 +8,29 @@ import { gql } from '@apollo/client';
  */
 export const LOGIN = gql`
 mutation Mutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
+  login(email: $email, password: $password) {
+    token
+    user {
+      _id
+      email
+      password
+      username
+      lists {
         _id
-        email
-        lists {
+        listTitle
+        taskRefreshDay
+        tasks {
           _id
-          listTitle
-          taskRefreshDay
-          tasks {
-            _id
-            description
-            dueDate
-            finishTime
-            startTime
-            title
-          }
+          description
+          dueDate
+          finishTime
+          startTime
+          title
         }
-        password
-        username
       }
     }
-  }`
+  }
+}`
 
   
  /**
