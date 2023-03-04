@@ -40,7 +40,7 @@ function SignIn() {
 		}
 	};
 
-	const handleFormSubmit = (e) => {
+	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 
 		if (!validateEmail(email)) {
@@ -53,7 +53,9 @@ function SignIn() {
 		}
 
 		try{
-			const {data} = login(email, password);
+			const {data} = await login({variables: 
+				{email, password}
+			});
 			console.log({data});
 		}
 		catch(err)
