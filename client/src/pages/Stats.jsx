@@ -20,9 +20,7 @@ const styles = {
 function Stats() {
   const token = Auth.getToken();
   console.log({ token });
-  const { loading, data } = useQuery(QUERY_ME, {
-    variables: { userId: token.id },
-  });
+  const { loading, data } = useQuery(QUERY_ME);
 
   // if not logged in return to homepage
   if (!Auth.loggedIn()) {
