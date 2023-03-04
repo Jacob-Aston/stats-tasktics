@@ -103,7 +103,7 @@ function SignIn() {
 								id="filled-basic"
 								label="Email"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								sx={{ backgroundColor: "default.blue" }}
 							/>
@@ -117,7 +117,7 @@ function SignIn() {
 								id="filled-basic"
 								label="Password"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}

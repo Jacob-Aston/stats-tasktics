@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {CREATE_USER} from '../utils/graphQL/mutations.js';
+
 
 import {
 	Grid,
@@ -27,6 +29,8 @@ function SignUp() {
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
+
+
 	const handleInputChange = (e) => {
 	
 		const { target } = e;
@@ -43,7 +47,7 @@ function SignUp() {
 		}
 	};
 
-	const handleFormSubmit = (e) => {
+	const handleFormSubmit = async (e) => {
 
 		e.preventDefault();
 
@@ -60,6 +64,8 @@ function SignUp() {
 			);
 			return;
 		}
+
+
 
 		setUserName("");
 		setPassword("");
@@ -116,7 +122,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Username"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}
@@ -131,7 +137,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Email"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								sx={{ backgroundColor: "default.blue" }}
 							/>
@@ -145,7 +151,7 @@ function SignUp() {
 								id="filled-basic"
 								label="Password"
 								variant="filled"
-								required="true"
+								required
 								color="info"
 								align="center"
 								sx={{ backgroundColor: "default.blue" }}
