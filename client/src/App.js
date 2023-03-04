@@ -10,16 +10,11 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
-// import { createTheme, ThemeProvider } from "@mui/material";
-
-// import Home from './pages/Home';
-// import Signup from './pages/Signup';
-
+// importing pages
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import TaskCreate from './pages/TaskCreate';
-
-// import SingleThought from './pages/SingleThought';
+import TaskList from './pages/TaskList';
 import Stats from './pages/Stats';
 
 // Construct our main GraphQL API endpoint
@@ -77,14 +72,11 @@ function App() {
           <div className="flex-column justify-flex-start min-100-vh">
             <div className="container">
               <Routes>
-                {/* <Route 
-                path="/" 
-                element={<Home />} 
-              /> */}
                 <Route path="/" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/taskcreate" element={<TaskCreate />} />
                 <Route path="/stats" element={<Stats />} />
+                <Route path="/tasklist" element={<TaskList />} />
+                <Route path="/taskcreate" element={<TaskCreate />} />
               </Routes>
             </div>
           </div>
