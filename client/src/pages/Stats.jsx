@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { Grid, Paper, Typography, Box, Tabs, Tab } from '@mui/material';
+import { Grid, Paper, Typography, Box, Button, Tabs, Tab } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import BarChart from '../charts/Bar';
 import Auth from '../utils/auth.js';
@@ -15,6 +15,12 @@ const styles = {
     height: '145px',
     paddingTop: '20px',
   },
+};
+// logout of the account
+const logout = (event) => {
+  event.preventDefault();
+  Auth.logout();
+  return <Navigate to="/" />;
 };
 
 function Stats() {
@@ -72,6 +78,13 @@ function Stats() {
               </Tabs>
             </Box>
             <BarChart />
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: 'default.gray', color: 'default.blue' }}
+              onClick={logout}
+            >
+              Sign Out
+            </Button>
           </Grid>
         </Paper>
       </Grid>
