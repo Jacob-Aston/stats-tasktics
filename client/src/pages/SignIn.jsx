@@ -13,6 +13,7 @@ import { checkPassword, validateEmail } from "../utils/helpers";
 import logo from "../images/statslogoph.png";
 import {LOGIN} from '../utils/graphQL/mutations.js';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth.js';
 
 const styles = {
 	img: {
@@ -57,6 +58,10 @@ function SignIn() {
 				{email, password}
 			});
 			console.log({data});
+			//console.log("attempt to login")
+			Auth.login(data.login.token);
+			//console.log("print the token info");
+			//console.log(Auth.getTokenInfo());
 		}
 		catch(err)
 		{
