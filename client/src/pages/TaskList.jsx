@@ -1,5 +1,3 @@
-// TODO: add function here. Chunk of text, day of repeat. Accordian with the task list below.
-
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Grid, Paper, Typography, Box, Tabs, Tab } from '@mui/material';
@@ -7,8 +5,6 @@ import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/graphQL/queries.js';
-// this makes the charts show up. Do not remove this.
-// import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -40,9 +36,6 @@ function TaskList() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  //   console.log('You are logged in!');
-  //   console.log({ token });
-  //   console.log({ data });
   // container for the entire page
   return (
     <Grid
@@ -69,8 +62,14 @@ function TaskList() {
             justifyContent="center"
             alignItems="center"
           >
-            {/* This is the tabs for Stats and Tasks  */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            {/* This is the tab-bar for Stats and Tasks  */}
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                color: 'default.gray',
+              }}
+            >
               <Tabs value="Tasks" variant="fullWidth">
                 <Tab label="Stats" value="Stats" href="/stats" />
                 <Tab label="Tasks" value="Tasks" />
@@ -80,6 +79,10 @@ function TaskList() {
               <Accordion
                 expanded={expanded === 'panel1'}
                 onChange={handleChange('panel1')}
+                sx={{
+                  backgroundcolor: 'default.blue',
+                  color: 'default.gray',
+                }}
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}

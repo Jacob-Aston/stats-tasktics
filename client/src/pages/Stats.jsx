@@ -58,11 +58,17 @@ function Stats() {
             justifyContent="center"
             alignItems="center"
           >
-            {/* This is the tabs for Stats and Tasks  */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            {/* This is the tab-bar for Stats and Tasks  */}
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                color: 'default.gray',
+              }}
+            >
               <Tabs value="Stats" variant="fullWidth">
                 <Tab label="Stats" value="Stats" />
-                <Tab label="Tasks" value="Tasks" href="/tasks" />
+                <Tab label="Tasks" value="Tasks" href="/tasklist" />
               </Tabs>
             </Box>
             <BarChart />
