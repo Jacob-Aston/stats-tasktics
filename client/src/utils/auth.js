@@ -9,7 +9,7 @@ class AuthService {
     getToken()
     {
         const token = localStorage.getItem(this.#tokenName);
-        return this.isTokenExpired(token) ? null : token;
+        return token;
     }
 
     /**
@@ -18,7 +18,7 @@ class AuthService {
     login(token)
     {
         localStorage.setItem(this.#tokenName, token);
-        window.location.assign('/');
+        //window.location.assign('/');
     }
     
     logout()
@@ -37,12 +37,16 @@ class AuthService {
 
     isTokenExpired(token)
     {
-        const decoded = decode(token);
+        const decoded = this.getTokenInfo();
         //if experation time is greater than current time token is still vaild
         if(decoded.exp > (Date.now() / 1000)) return false;
         //if experation time is passed then remove the token and return true
         this.logout()
         return true;
+    }
+
+    getTokenInfo() {
+        return decode(this.getToken());
     }
 }
 

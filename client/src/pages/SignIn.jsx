@@ -13,7 +13,7 @@ import { checkPassword, validateEmail } from '../utils/helpers';
 import logo from '../images/statslogoph.png';
 import { LOGIN } from '../utils/graphQL/mutations.js';
 import { useMutation } from '@apollo/client';
-import { login } from '../utils/auth';
+import Auth from '../utils/auth.js';
 
 const styles = {
   img: {
@@ -53,17 +53,25 @@ function SignIn() {
       return;
     }
 
-    try {
-      const { data } = await login({ variables: { email, password } });
-      console.log({ data });
-      login(data.token);
-    } catch (err) {
-      console.error(err);
-    }
+		try{
+			const {data} = await login({variables: 
+				{email, password}
+			});
+			console.log({data});
+			//console.log("attempt to login")
+			Auth.login(data.login.token);
+			//console.log("print the token info");
+			//console.log(Auth.getTokenInfo());
+		}
+		catch(err)
+		{
+			console.error(err);
+		}
+		
 
-    setPassword('');
-    setEmail('');
-  };
+		setPassword("");
+		setEmail("");
+	};
 
   return (
     <Grid
