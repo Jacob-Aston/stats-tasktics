@@ -77,6 +77,7 @@ function App() {
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/tasklist" element={<TaskList />} />
                 <Route path="/taskcreate" element={<TaskCreate />} />
+                <Route path="/*" element={<SignIn />} />
               </Routes>
             </div>
           </div>
