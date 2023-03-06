@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { Grid, Paper, Typography, Box, Button, Tabs, Tab } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import BarChart from '../charts/Bar';
+import LineChart from '../charts/Line';
 import Auth from '../utils/auth.js';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/graphQL/queries.js';
@@ -79,6 +80,7 @@ function Stats() {
               </Tabs>
             </Box>
             <BarChart />
+            <LineChart />
             <Button
               variant="contained"
               sx={{ backgroundColor: 'default.gray', color: 'default.blue' }}
