@@ -7,12 +7,12 @@ const data = {
     {
       // each dataset is a bar inside each of the above labels
       label: 'On-Time',
-      data: '4',
+      data: ['4', '6'],
       backgroundColor: '#2C3531',
     },
     {
       label: 'Complete',
-      data: '6',
+      data: ['6', '2'],
       backgroundColor: '#D1E8E2',
     },
   ],

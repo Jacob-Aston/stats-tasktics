@@ -59,6 +59,9 @@ function Stats() {
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
+          {/* this is the heading that tells the user they are logged in.  */}
+          {/* TODO: add the username as the individual's name  */}
+          <Typography>Hello "Username", welcome to Stat-tasktic</Typography>
           <Grid
             container
             item
