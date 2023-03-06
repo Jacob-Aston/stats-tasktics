@@ -16,17 +16,18 @@ const styles = {
     paddingTop: '20px',
   },
 };
-// logout of the account
-const logout = (event) => {
-  event.preventDefault();
-  Auth.logout();
-  return <Navigate to="/" />;
-};
 
 function Stats() {
   const token = Auth.getToken();
   console.log({ token });
   const { loading, data } = useQuery(QUERY_ME);
+
+  // logout of the account
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+    // return <Navigate to="/" />;
+  };
 
   // if not logged in return to homepage
   if (!Auth.loggedIn()) {
