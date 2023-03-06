@@ -7,6 +7,7 @@ import {
   Box,
   Tabs,
   Tab,
+  Button,
   Checkbox,
   FormControlLabel,
 } from '@mui/material';
@@ -34,9 +35,16 @@ function TaskList() {
 
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
-  console.log({ complete });
+  // console.log({ complete });
   const handleComplete = (event) => {
     setComplete(event.target.checked);
+  };
+
+  // logout of the account
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+    // return <Navigate to="/" />;
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -69,6 +77,7 @@ function TaskList() {
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
+          <Typography>"Username's" task lists:</Typography>
           <Grid
             container
             item
@@ -125,6 +134,17 @@ function TaskList() {
                 </AccordionDetails>
               </Accordion>
             </Box>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: 'default.gray',
+                color: 'default.blue',
+                margin: '.5rem',
+              }}
+              onClick={logout}
+            >
+              Sign Out
+            </Button>
           </Grid>
         </Paper>
       </Grid>
