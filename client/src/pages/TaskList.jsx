@@ -1,6 +1,15 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { Grid, Paper, Typography, Box, Tabs, Tab } from '@mui/material';
+import {
+  Grid,
+  Paper,
+  Typography,
+  Box,
+  Tabs,
+  Tab,
+  Checkbox,
+  FormControlLabel,
+} from '@mui/material';
 import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
 import { useQuery } from '@apollo/client';
@@ -24,6 +33,11 @@ function TaskList() {
   const { loading, data } = useQuery(QUERY_ME);
 
   const [expanded, setExpanded] = React.useState(false);
+  const [complete, setComplete] = React.useState(false);
+  console.log({ complete });
+  const handleComplete = (event) => {
+    setComplete(event.target.checked);
+  };
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -97,7 +111,17 @@ function TaskList() {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>[Tasks]</Typography>
+                  <Box>
+                    <FormControlLabel
+                      label="Task Name"
+                      control={
+                        <Checkbox
+                          checked={complete}
+                          onChange={handleComplete}
+                        />
+                      }
+                    />
+                  </Box>
                 </AccordionDetails>
               </Accordion>
             </Box>
