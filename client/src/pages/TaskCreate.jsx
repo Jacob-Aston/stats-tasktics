@@ -31,29 +31,40 @@ function SignIn() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<Grid item>
-							<Typography>Create a task:</Typography>
+						<Grid item marginY={2} marginX={3}>
+							<Typography variant="h3" component="h2" textAlign={"center"}>
+								Create a task:
+							</Typography>
 						</Grid>
-						<Grid item>
-							<TextField
-								id="filled-basic"
-								label="Task List Name"
+						<Grid item marginBottom={3}>
+							<FormControl
 								variant="filled"
-							/>
+								sx={{ minWidth: 205, backgroundColor: "default.blue" }}
+							>
+								<TextField id="filled-basic" label="Name" variant="filled" />
+							</FormControl>
 						</Grid>
-						<Grid item>
-							<TextField
-								id="filled-multiline-flexible"
-								label="Task List"
-								multiline
-								maxRows={4}
+						<Grid item marginBottom={3}>
+							<FormControl
 								variant="filled"
-							/>
+								sx={{ minWidth: 205, backgroundColor: "default.blue" }}
+							>
+								<TextField
+									id="filled-multiline-flexible"
+									label="Description"
+									multiline
+									maxRows={4}
+									variant="filled"
+								/>
+							</FormControl>
 						</Grid>
-						<Grid item>
-							<FormControl variant="filled" sx={{ m: 1, minWidth: 160 }}>
+						<Grid item marginBottom={3}>
+							<FormControl
+								variant="filled"
+								sx={{ minWidth: 205, backgroundColor: "default.blue" }}
+							>
 								<InputLabel id="demo-simple-select-filled-label">
-									Repeat Day
+									Renewal Day
 								</InputLabel>
 								<Select
 									labelId="demo-simple-select-filled-label"
