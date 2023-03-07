@@ -19,12 +19,13 @@ query Me {
             listTitle
             taskRefreshDay
             tasks {
-                 _id
-                 title
+                _id
+                title
                 description
                 dueDate
-                finishTime
                 startTime
+                finishTime
+                completed
             }
         }
     }
@@ -46,10 +47,11 @@ query Me {
             ${lists && tasks ? `tasks {
                 _id
                 title
-               description
-               dueDate
-               finishTime
-               startTime
+                description
+                dueDate
+                startTime
+                finishTime
+                completed
            }` : ``}
         }`: ``}
     }

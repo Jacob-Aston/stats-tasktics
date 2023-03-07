@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {CREATE_USER} from '../utils/graphQL/mutations.js';
-import { useMutation } from '@apollo/client';
+import { CREATE_USER } from "../utils/graphQL/mutations.js";
+import { useMutation } from "@apollo/client";
 
 import {
 	Grid,
@@ -14,6 +14,7 @@ import {
 
 import logo from "../images/statslogoph.png";
 import { checkPassword, validateEmail } from "../utils/helpers";
+import { login } from "../utils/auth";
 
 const styles = {
 	img: {
@@ -28,16 +29,12 @@ function SignUp() {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [createUser, {error}] = useMutation(CREATE_USER);
-
-
+	const [createUser, { error }] = useMutation(CREATE_USER);
 
 	const handleInputChange = (e) => {
-	
 		const { target } = e;
 		const inputType = target.name;
 		const inputValue = target.value;
-
 
 		if (inputType === "email") {
 			setEmail(inputValue);
@@ -49,39 +46,34 @@ function SignUp() {
 	};
 
 	const handleFormSubmit = async (e) => {
-
 		e.preventDefault();
-
 
 		if (!validateEmail(email) || !userName) {
 			setErrorMessage("Email or username is invalid");
 
 			return;
-
 		}
 		if (!checkPassword(password)) {
 			setErrorMessage(
-				`Password must have one letter, and can be between 0-15 characters`
+				`Password must have one letter, and can be between 8-15 characters`
 			);
 			return;
 		}
 
 		try {
 			console.log(`creating user with ${userName}, ${email}, and ${password}`);
-			const {data} = await createUser({
+			const { data } = await createUser({
 				variables: {
 					email,
 					username: userName,
-					password
-				}
+					password,
+				},
 			});
-			console.log({data});
-		}
-		catch(err){
+			console.log({ data });
+		} catch (err) {
 			console.log("ran into an error");
 			console.error(err);
 		}
-		
 
 		setUserName("");
 		setPassword("");
@@ -135,7 +127,7 @@ function SignUp() {
 								name="userName"
 								onChange={handleInputChange}
 								type="text"
-								id="filled-basic"
+								id="username"
 								label="Username"
 								variant="filled"
 								required
@@ -150,7 +142,7 @@ function SignUp() {
 								name="email"
 								onChange={handleInputChange}
 								type="email"
-								id="filled-basic"
+								id="email-signup"
 								label="Email"
 								variant="filled"
 								required
@@ -164,7 +156,7 @@ function SignUp() {
 								name="password"
 								onChange={handleInputChange}
 								type="password"
-								id="filled-basic"
+								id="password-signup"
 								label="Password"
 								variant="filled"
 								required

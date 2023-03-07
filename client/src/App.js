@@ -10,17 +10,13 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
-// import { createTheme, ThemeProvider } from "@mui/material";
-
-// import Home from './pages/Home';
-// import Signup from './pages/Signup';
-
+// importing pages
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import TaskCreate from './pages/TaskCreate';
-
-// import SingleThought from './pages/SingleThought';
+import TaskList from './pages/TaskList';
 import Stats from './pages/Stats';
+import ListCreate from './pages/ListCreate';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -30,7 +26,7 @@ const httpLink = createHttpLink({
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem('JWTToken');
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -77,14 +73,13 @@ function App() {
           <div className="flex-column justify-flex-start min-100-vh">
             <div className="container">
               <Routes>
-                {/* <Route 
-                path="/" 
-                element={<Home />} 
-              /> */}
                 <Route path="/" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/taskcreate" element={<TaskCreate />} />
                 <Route path="/stats" element={<Stats />} />
+                <Route path="/tasklist" element={<TaskList />} />
+                <Route path="/listcreate" element={<ListCreate />} />
+                <Route path="/taskcreate" element={<TaskCreate />} />
+                <Route path="/*" element={<SignIn />} />
               </Routes>
             </div>
           </div>
