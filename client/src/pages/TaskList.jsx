@@ -79,7 +79,9 @@ function TaskList() {
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
-          <Typography>add user name here task lists:</Typography>
+          <Typography textAlign="center">
+            {data.me.username}'s task lists:
+          </Typography>
           <Grid
             container
             item
@@ -124,6 +126,7 @@ function TaskList() {
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
+                  {/* TODO: add logic here to loop over the lists array to create lists */}
                   <Typography sx={{ width: '33%', flexShrink: 0 }}>
                     [Task List Name]
                   </Typography>
@@ -131,6 +134,7 @@ function TaskList() {
                     [Renewal Day]
                   </Typography>
                 </AccordionSummary>
+                {/* TODO: add logic here to loop over the tasks array inside each list */}
                 <AccordionDetails>
                   <Box>
                     <FormControlLabel
