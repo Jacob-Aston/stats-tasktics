@@ -98,6 +98,7 @@ function TaskList() {
               <Tabs value="Tasks" variant="fullWidth">
                 <Tab label="Stats" value="Stats" href="/stats" />
                 <Tab label="Tasks" value="Tasks" />
+                <Tab label="Tasks" value="Tasks" href="/taskcreate" />
               </Tabs>
             </Box>
             <Box>
