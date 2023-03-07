@@ -86,7 +86,11 @@ function Stats() {
             <LineChart />
             <Button
               variant="contained"
-              sx={{ backgroundColor: 'default.gray', color: 'default.blue' }}
+              sx={{
+                backgroundColor: 'default.gray',
+                color: 'default.blue',
+                margin: '.5rem',
+              }}
               onClick={logout}
             >
               Sign Out
