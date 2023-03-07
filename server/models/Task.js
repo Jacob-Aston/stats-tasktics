@@ -31,7 +31,11 @@ const taskSchema = new Schema({
         required: false,
         unique: false,
     }
-});
+},
+{
+   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+}
+);
 
 //this function gives the user schema its name!!!
 const TaskSchema = model('Task', taskSchema);

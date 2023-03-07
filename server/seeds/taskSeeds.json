@@ -9,6 +9,8 @@
         "_id": "640386270087e5a3be1444a9",
         "title": "testPetTask",
         "description": "description",
-        "dueDate": "Monday"
+        "dueDate": "Monday",
+        "startTime": 1678157694477,
+        "finishTime": 167815768000
     }
 ]
