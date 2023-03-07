@@ -33,6 +33,9 @@ function TaskList() {
   //   console.log({ token });
   const { loading, data } = useQuery(QUERY_ME);
 
+  // getting data from server
+  const lists = data?.lists;
+
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
   // console.log({ complete });
@@ -77,7 +80,7 @@ function TaskList() {
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
-          <Typography>"Username's" task lists:</Typography>
+          <Typography>add user name here task lists:</Typography>
           <Grid
             container
             item
