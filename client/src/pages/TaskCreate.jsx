@@ -11,22 +11,51 @@ import {
 	InputLabel,
 	FormControl,
 } from "@mui/material";
+import Auth from "../utils/auth.js";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/graphQL/queries.js";
+import { Navigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
 function TaskCreate() {
+	const token = Auth.getToken();
+	// console.log({ token });
+	const { loading, data } = useQuery(QUERY_ME);
+
+	// logout of the account
+	// const logout = (event) => {
+	// 	event.preventDefault();
+	// 	Auth.logout();
+	// };
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
+	const [dueDate, setDueDate] = useState("");
 	// const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const [createTask, { error }] = useMutation(CREATE_TASK);
+
+	// if not logged in return to homepage
+	if (!Auth.loggedIn()) {
+		return <Navigate to="/" />;
+	}
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
 	const handleInputChange = (e) => {
 		const { target } = e;
 		const inputType = target.name;
 		const inputValue = target.value;
+		// const handleChange =
+		// 	setDueDate(e.target.value);
 
 		if (inputType === "title") {
 			setTitle(inputValue);
 		} else if (inputType === "description") {
 			setDescription(inputValue);
+		} else if (inputType === "dueDate") {
+			setDueDate(inputValue);
 		}
 	};
 
@@ -43,8 +72,27 @@ function TaskCreate() {
 			return;
 		}
 
+		try {
+			console.log(
+				`creating task with ${title}, ${description}, and ${dueDate}`
+			);
+			const { data } = await createTask({
+				variables: {
+					title,
+					description,
+					dueDate,
+				},
+			});
+			console.log({ data });
+		} catch (err) {
+			console.log(data);
+			console.log("ran into an error");
+			console.error(err);
+		}
+
 		setTitle("");
 		setDescription("");
+		setDueDate("");
 	};
 
 	return (
@@ -102,6 +150,10 @@ function TaskCreate() {
 								sx={{ minWidth: 205, backgroundColor: "default.blue" }}
 							>
 								<TextField
+									value={description}
+									name="description"
+									onChange={handleInputChange}
+									type="text"
 									id="filled-multiline-flexible"
 									label="Description"
 									multiline
@@ -119,21 +171,20 @@ function TaskCreate() {
 									Renewal Day
 								</InputLabel>
 								<Select
-									type="select"
-									labelId="demo-simple-select-filled-label"
-									id="demo-simple-select-filled"
-									// value={age}
-									// onChange={handleChange}
+										value={dueDate}
+										name="dueDate"
+										onChange={handleInputChange}
+										type="text"
 								>
 									<MenuItem value="">
 										<em>day</em>
 									</MenuItem>
-									<MenuItem value={"monday"}>Monday</MenuItem>
-									<MenuItem value={"tuesday"}>Tuesday</MenuItem>
-									<MenuItem value={"wednesday"}>Wednesday</MenuItem>
-									<MenuItem value={"thursday"}>Thursday</MenuItem>
-									<MenuItem value={"friday"}>Friday</MenuItem>
-									<MenuItem value={"saturday"}>Saturday</MenuItem>
+									<MenuItem value="monday">Monday</MenuItem>
+									<MenuItem value="tuesday">Tuesday</MenuItem>
+									<MenuItem value="wednesday">Wednesday</MenuItem>
+									<MenuItem value="thursday">Thursday</MenuItem>
+									<MenuItem value="friday">Friday</MenuItem>
+									<MenuItem value="saturday">Saturday</MenuItem>
 									<MenuItem value={"sunday"}>Sunday</MenuItem>
 								</Select>
 							</FormControl>
