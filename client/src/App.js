@@ -16,6 +16,7 @@ import SignUp from './pages/SignUp';
 import TaskCreate from './pages/TaskCreate';
 import TaskList from './pages/TaskList';
 import Stats from './pages/Stats';
+import ListCreate from './pages/ListCreate';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/tasklist" element={<TaskList />} />
+                <Route path="/listcreate" element={<ListCreate />} />
                 <Route path="/taskcreate" element={<TaskCreate />} />
                 <Route path="/*" element={<SignIn />} />
               </Routes>
