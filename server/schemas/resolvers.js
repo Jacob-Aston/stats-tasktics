@@ -113,9 +113,33 @@ const resolvers = {
             );
             return newList;
         },
+        removeTask: async (parent, {listId, taskId}) =>
+        {
+            const task = await Task.findOneAndDelete({
+                _id: taskId
+            });
+            await List.findOneAndUpdate({_id: listId},
+                {
+                    $pull: { tasks: {_id: taskId}}
+                });
+            return task
+        },
+        removeList: async (parent, {listId}) =>
+        {
+            const lists = await List.findOne({_id: listId});
+            console.log({lists});
+            const tasks = lists.tasks;
+            const taskIds = tasks.map((tasks) => {return tasks._id;});
+            taskIds.forEach(async (taskId) => {
+                await Task.findByIdAndDelete(taskId);
+            })
+            console.log("taskIds", taskIds);
+            const list = await List.findOneAndDelete({
+                _id: listId
+            });
+            return list
+        },
     },
-    
-    
 };
 
 module.exports = resolvers;

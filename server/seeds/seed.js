@@ -10,19 +10,12 @@ db.once('open', async () => {
       await User.deleteMany({});
       await Task.deleteMany({})
   
+
+      await Task.create(taskSeeds);
+      await List.create(listSeeds);
+
       await User.create(userSeeds);
   
-      for (let i = 0; i < listSeeds.length; i++) {
-        const { _id, email } = await List.create(listSeeds[i]);
-        const user = await User.findOneAndUpdate(
-          { email: email },
-          {
-            $addToSet: {
-              list: _id,
-            },
-          }
-        );
-      }
     } catch (err) {
       console.error(err);
       process.exit(1);

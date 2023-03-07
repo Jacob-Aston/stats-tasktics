@@ -51,9 +51,13 @@ const typeDefs = gql`
         
         updateUser(email: String!, username: String, password: String): User
 
-        updateTask(taskId: ID! , taskTitle: String ,taskDescription: String, dueDate: String, startTime: Date, finishTime: Date): Task
+        updateTask(taskId: ID!, taskTitle: String, taskDescription: String, dueDate: String, startTime: Date, finishTime: Date): Task
 
         updateList(id: ID!, listTitle: String, taskRefreshDay: String): List
+
+        removeTask(listId: ID!, taskId: ID!): Task
+
+        removeList(listId: ID!): List
     }
 `
 
