@@ -27,7 +27,6 @@ function Stats() {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    // return <Navigate to="/" />;
   };
 
   // if not logged in return to homepage
@@ -60,8 +59,9 @@ function Stats() {
         {/* text and stats box  */}
         <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
           {/* this is the heading that tells the user they are logged in.  */}
-          {/* TODO: add the username as the individual's name  */}
-          <Typography>Hello "Username", welcome to Stat-tasktic</Typography>
+          <Typography>
+            Hello {data.me.username}, welcome to Stat-tasktic
+          </Typography>
           <Grid
             container
             item

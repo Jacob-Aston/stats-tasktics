@@ -20,7 +20,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem(this.#tokenName);
-    window.location.reload();
+    window.location.assign('/');
   }
 
   loggedIn() {
