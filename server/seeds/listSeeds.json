@@ -1,0 +1,14 @@
+[
+    {
+        "_id": "640386270087e5a3be1444a1",
+        "listTitle": "Chores",
+        "taskRefreshDay": "Sunday",
+        "tasks": ["640386270087e5a3be1444a9"]
+    },
+    {
+        "_id": "640386270087e5a3be1444a2",
+        "listTitle": "Plants",
+        "taskRefreshDay": "Monday",
+        "tasks": ["640386270087e5a3be1444a3"]
+    }
+]

@@ -1,0 +1,15 @@
+[
+    {
+      "username": "Brian Kernighan",
+      "email": "bkernighan@techfriends.dev",
+      "password": "password01",
+      "lists": []
+    },
+    {
+      "username": "Max Kanat-Alexander",
+      "email": "mkanatalexander@techfriends.dev",
+      "password": "password02",
+      "lists": [ "640386270087e5a3be1444a2"]
+    }
+  ]
+  
