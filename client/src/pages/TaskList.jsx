@@ -34,7 +34,7 @@ function TaskList() {
   const { loading, data } = useQuery(QUERY_ME);
 
   // getting data from server
-  const lists = data?.lists;
+  console.log({ data });
 
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
@@ -47,7 +47,6 @@ function TaskList() {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    // return <Navigate to="/" />;
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
