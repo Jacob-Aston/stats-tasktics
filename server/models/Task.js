@@ -30,6 +30,10 @@ const taskSchema = new Schema({
         type: Date,
         required: false,
         unique: false,
+    },
+    completed: {
+        type: Boolean,
+        default: false,
     }
 },
 {

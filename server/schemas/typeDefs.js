@@ -26,6 +26,7 @@ const typeDefs = gql`
         dueDate: String
         startTime: Date
         finishTime: Date
+        completed: Boolean
     }
 
     type Auth {
@@ -40,6 +41,7 @@ const typeDefs = gql`
         lists: [List]
         tasks: [Task]
     }
+    
     type Mutation {
         addUser(email: String!, username: String!, password: String!): User
 
@@ -50,6 +52,8 @@ const typeDefs = gql`
         addTask(listId: ID!, taskTitle: String! taskDescription: String, dueDate: String!, startTime: Date, finishTime: Date): Task
         
         updateUser(email: String!, username: String, password: String): User
+
+        completeTask(taskId: ID!): Task
 
         updateTask(taskId: ID!, taskTitle: String, taskDescription: String, dueDate: String, startTime: Date, finishTime: Date): Task
 

@@ -87,6 +87,14 @@ const resolvers = {
             );
             return newUser;
         },
+        completeTask: async (parent, {id: taskId}) => 
+        {
+            const task = await Task.findOne({taskId});
+            await Task.findOneAndUpdate({taskId},
+                {...task,
+                    completed: true
+                })
+        },
         updateTask: async (parent, {id: taskId, title: taskTitle, description: taskDescription, dueDate: dueDate, startTime: startTime, finishTime: finishTime}) => 
         {
             const task = await Task.findOne({taskId});
