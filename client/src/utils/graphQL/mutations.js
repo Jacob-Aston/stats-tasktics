@@ -21,11 +21,12 @@ mutation Mutation($email: String!, $password: String!) {
         taskRefreshDay
         tasks {
           _id
+          title
           description
           dueDate
-          finishTime
           startTime
-          title
+          finishTime
+          completed
         }
       }
     }
@@ -67,10 +68,13 @@ addUser(email: $email, username: $username, password: $password) {
   export const CREATE_TASK = gql`
   mutation Mutation($listId: ID!, $taskTitle: String!, $dueDate: String!, $taskDescription: String) {
   addTask(listId: $listId, taskTitle: $taskTitle, dueDate: $dueDate, taskDescription: $taskDescription) {
-      _id
-      title
-      description
-      dueDate
+    _id
+    title
+    description
+    dueDate
+    startTime
+    finishTime
+    completed
     }
   }`
 
@@ -111,12 +115,28 @@ addUser(email: $email, username: $username, password: $password) {
   export const UPDATE_TASK = gql`
   mutation Mutation($taskId: ID!, $taskTitle: String, $taskDescription: String, $dueDate: String, $startTime: Date, $finishTime: Date) {
   updateTask(taskId: $taskId, taskTitle: $taskTitle, taskDescription: $taskDescription, dueDate: $dueDate, startTime: $startTime, finishTime: $finishTime) {
-      _id
-      description
-      dueDate
-      finishTime
-      startTime
-      title
+    _id
+    title
+    description
+    dueDate
+    startTime
+    finishTime
+    completed
     }
   }`;
+
+
+  export const COMPLETE_TASK = gql`
+  mutation Mutation($taskId: ID!) {
+    completeTask(taskId: $taskId) {
+      _id
+      title
+      description
+      dueDate
+      startTime
+      finishTime
+      completed
+    }
+  }
+  `;
 
