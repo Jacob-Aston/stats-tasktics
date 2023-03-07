@@ -80,7 +80,16 @@ function Stats() {
               <Tabs value="Stats" variant="fullWidth">
                 <Tab label="Stats" value="Stats" />
                 <Tab label="Task Lists" value="Tasks" href="/tasklist" />
-                <Tab label="Tasks" value="Tasks" href="/taskcreate" />
+                <Tab
+                  label="Create List"
+                  value="Create List"
+                  href="/listcreate"
+                />
+                <Tab
+                  label="Create Task"
+                  value="Create Task"
+                  href="/taskcreate"
+                />
               </Tabs>
             </Box>
             <BarChart />

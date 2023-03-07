@@ -95,10 +95,19 @@ function TaskList() {
                 color: 'default.gray',
               }}
             >
-              <Tabs value="Tasks" variant="fullWidth">
+              <Tabs value="Task Lists" variant="fullWidth">
                 <Tab label="Stats" value="Stats" href="/stats" />
-                <Tab label="Tasks" value="Tasks" />
-                <Tab label="Tasks" value="Tasks" href="/taskcreate" />
+                <Tab label="Task Lists" value="Task Lists" />
+                <Tab
+                  label="Create List"
+                  value="Create List"
+                  href="/listcreate"
+                />
+                <Tab
+                  label="Create Task"
+                  value="Create Task"
+                  href="/taskcreate"
+                />
               </Tabs>
             </Box>
             <Box>
