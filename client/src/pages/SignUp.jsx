@@ -75,7 +75,6 @@ function SignUp() {
 			});
 			console.log({ data });
 			Auth.login(data.addUser.token);
-			
 		} catch (err) {
 			console.log("ran into an error");
 			console.error(err);
@@ -177,8 +176,8 @@ function SignUp() {
 								variant="contained"
 								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 								onClick={handleFormSubmit}
-								to="/stats"
 								component={RouterLink}
+								to="/stats"
 							>
 								Submit
 							</Button>
