@@ -32,7 +32,13 @@ const styles = {
 function TaskList() {
   const token = Auth.getTokenInfo();
   // console.log({ token });
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME, 
+    { 
+      variables:
+      { offset: 0 },
+    fetchPolicy: 'network-only'
+    }
+  );
 
   // getting data from server
   console.log({ data });
