@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { CREATE_USER } from "../utils/graphQL/mutations.js";
 import { useMutation } from "@apollo/client";
-import Auth from '../utils/auth.js';
+import Auth from "../utils/auth.js";
+import { useNavigate } from "react-router-dom";
 
 import {
 	Grid,
@@ -26,6 +27,7 @@ const styles = {
 };
 
 function SignUp() {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
@@ -80,6 +82,7 @@ function SignUp() {
 		setUserName("");
 		setPassword("");
 		setEmail("");
+		navigate("/stats");
 	};
 
 	return (
