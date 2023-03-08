@@ -72,6 +72,7 @@ function SignUp() {
 			});
 			console.log({ data });
 			Auth.login(data.addUser.token);
+			
 		} catch (err) {
 			console.log("ran into an error");
 			console.error(err);

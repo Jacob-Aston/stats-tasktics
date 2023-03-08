@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import {
   Grid,
   Paper,
@@ -39,6 +39,7 @@ function TaskList() {
     fetchPolicy: 'network-only'
     }
   );
+  const navigate = useNavigate();
 
   // getting data from server
   console.log({ data });
@@ -66,6 +67,13 @@ function TaskList() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const handleAddTask = (listId) => {
+      //event.stopPropagation();
+      window.localStorage.setItem('currentListId', listId);
+      navigate('/taskcreate');
+  }
+
 
   // if not logged in return to homepage
   if (!Auth.loggedIn()) {
@@ -156,6 +164,9 @@ function TaskList() {
                       <Typography sx={{ color: 'text.secondary' }}>
                         {lst.taskRefreshDay}
                       </Typography>
+                      <Button onClick={() => handleAddTask(lst._id)}>
+                          +
+                      </Button>
                     </AccordionSummary>
                     {lst.tasks?.map((task) => {
                       return (
