@@ -54,19 +54,19 @@ export default function TemporaryDrawer() {
 				</ListItem>
 			</List>
 			<List>
-				<ListItem component={Link} to="/stats">
+				<ListItem component={Link} to="/listcreate">
 					<ListItemIcon>
 						<ListAltIcon />
 					</ListItemIcon>
-					<ListItemText primary="Stats" />
+					<ListItemText primary="Create List" />
 				</ListItem>
 			</List>
 			<List>
-				<ListItem component={Link} to="/stats">
+				<ListItem component={Link} to="/taskcreate">
 					<ListItemIcon>
 						<AddTaskIcon />
 					</ListItemIcon>
-					<ListItemText primary="Stats" />
+					<ListItemText primary="Create Task" />
 				</ListItem>
 			</List>
 			<Divider />
@@ -79,7 +79,7 @@ export default function TemporaryDrawer() {
 				<React.Fragment key={anchor}>
 					<Button
 						onClick={toggleDrawer(anchor, true)}
-						sx={{ color: "default.tan" }}
+						sx={{ color: "default.darkTan" }}
 					>
 						<MenuIcon />
 					</Button>

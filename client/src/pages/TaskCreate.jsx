@@ -14,6 +14,7 @@ import {
 	InputLabel,
 	FormControl,
 } from "@mui/material";
+import logo from "../images/statslogoph.png";
 import Drawer from "../components/Drawer";
 import Auth from "../utils/auth.js";
 import { useQuery } from "@apollo/client";
@@ -106,8 +107,22 @@ function TaskCreate() {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Drawer />
-			<Grid item marginTop={2} marginX={2}>
+			<Grid
+				container
+				item
+				direction="row-reverse"
+				justifyContent="space-between"
+			>
+				<Grid item>
+					<Drawer />
+				</Grid>
+				<Grid item marginLeft={2}>
+					<Typography variant="h5" component="h4" color={"default.tan"}>
+						Stat-tasktic
+					</Typography>
+				</Grid>
+			</Grid>
+			<Grid item marginX={2}>
 				{errorMessage && (
 					<Alert
 						severity="error"
@@ -128,7 +143,7 @@ function TaskCreate() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<Box
+						{/* <Box
 							sx={{
 								borderBottom: 1,
 								borderColor: "divider",
@@ -145,7 +160,7 @@ function TaskCreate() {
 								/>
 								<Tab label="Create Task" value="Create Task" />
 							</Tabs>
-						</Box>
+						</Box> */}
 						<Grid item marginY={2} marginX={3}>
 							<Typography variant="h3" component="h2" textAlign={"center"}>
 								Create a task:
