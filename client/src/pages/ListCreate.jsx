@@ -153,7 +153,7 @@ function ListCreate() {
 						</Box> */}
 						<Grid item marginY={2} marginX={3}>
 							<Typography variant="h3" component="h2" textAlign={"center"}>
-								Create a task:
+								Create a list:
 							</Typography>
 						</Grid>
 						<Grid item marginBottom={3}>
