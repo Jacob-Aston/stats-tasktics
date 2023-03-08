@@ -42,10 +42,28 @@ mutation Mutation($email: String!, $password: String!) {
   */
 export const CREATE_USER = gql`
 mutation Mutation($email: String!, $username: String!, $password: String!) {
-addUser(email: $email, username: $username, password: $password) {
-    _id
-    email
-    username
+  addUser(email: $email, username: $username, password: $password) {
+    token
+    user {
+      _id
+      username
+      email
+      password
+      lists {
+        _id
+        listTitle
+        taskRefreshDay
+        tasks {
+          _id
+          title
+          description
+          dueDate
+          startTime
+          finishTime
+          completed
+        }
+      }
+    }
   }
 }`
 
