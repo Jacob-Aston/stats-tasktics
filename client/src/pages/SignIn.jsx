@@ -153,7 +153,7 @@ function SignIn() {
               </Button>
             </Box>
             <Box padding={2} marginBottom={2} textAlign="center">
-              <Link href="/signup" underline="hover">
+              <Link to="/signup" underline="hover">
                 {"Don't have an account? Sign up here"}
               </Link>
             </Box>
