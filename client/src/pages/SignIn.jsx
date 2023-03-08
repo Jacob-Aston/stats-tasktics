@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link as RouterLink} from 'react-router-dom'
 import {
   Grid,
   Paper,
@@ -153,7 +154,7 @@ function SignIn() {
               </Button>
             </Box>
             <Box padding={2} marginBottom={2} textAlign="center">
-              <Link to="/signup" underline="hover">
+              <Link to="/signup" component={RouterLink} underline="hover">
                 {"Don't have an account? Sign up here"}
               </Link>
             </Box>
