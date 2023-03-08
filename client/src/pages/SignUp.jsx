@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CREATE_USER } from "../utils/graphQL/mutations.js";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth.js";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 import {
 	Grid,
@@ -27,7 +28,7 @@ const styles = {
 };
 
 function SignUp() {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
@@ -82,7 +83,7 @@ function SignUp() {
 		setUserName("");
 		setPassword("");
 		setEmail("");
-		navigate("/stats");
+		// navigate("/stats");
 	};
 
 	return (
@@ -175,6 +176,8 @@ function SignUp() {
 								variant="contained"
 								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 								onClick={handleFormSubmit}
+								to="/stats"
+								component={RouterLink}
 							>
 								Submit
 							</Button>
