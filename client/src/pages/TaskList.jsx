@@ -128,48 +128,52 @@ function TaskList() {
 							</Tabs>
 						</Box> */}
             <Box>
-              <Accordion
-                expanded={expanded === 'panel1'}
-                onChange={handleChange('panel1')}
-                sx={{
-                  backgroundcolor: 'default.blue',
-                  color: 'default.gray',
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
-                >
-                  {/* TODO: add logic here to loop over the lists array to create lists */}
-                  {data.list.map((lst) => {
-                    return (
-                      <>
-                        <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                          {lst.title}
-                        </Typography>
-                        <Typography sx={{ color: 'text.secondary' }}>
-                          {lst.taskRefreshDay}
-                        </Typography>
-                      </>
-                    );
-                  })}
-                </AccordionSummary>
-                {/* TODO: add logic here to loop over the tasks array inside each list */}
-                <AccordionDetails>
-                  <Box>
-                    <FormControlLabel
-                      label="Task Name"
-                      control={
-                        <Checkbox
-                          checked={complete}
-                          onChange={handleComplete}
-                        />
-                      }
-                    />
-                  </Box>
-                </AccordionDetails>
-              </Accordion>
+              {data.me.lists?.map((lst, index) => {
+                return (
+                  <Accordion
+                    expanded={expanded === 'panel1'}
+                    onChange={handleChange('panel1')}
+                    sx={{
+                      backgroundcolor: 'default.blue',
+                      color: 'default.gray',
+                    }}
+                    key={index}
+                  >
+                    {/* TODO: add logic here to loop over the lists array to create lists */}
+
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        {lst.listTitle}
+                      </Typography>
+                      <Typography sx={{ color: 'text.secondary' }}>
+                        {lst.taskRefreshDay}
+                      </Typography>
+                    </AccordionSummary>
+                    {/* TODO: add logic here to loop over the tasks array inside each list */}
+                    {lst.tasks?.map((task) => {
+                      return (
+                        <AccordionDetails>
+                          <Box>
+                            <FormControlLabel
+                              label={task.title}
+                              control={
+                                <Checkbox
+                                  checked={task.completed}
+                                  onChange={handleComplete}
+                                />
+                              }
+                            />
+                          </Box>
+                        </AccordionDetails>
+                      );
+                    })}
+                  </Accordion>
+                );
+              })}
             </Box>
             <Button
               variant="contained"
