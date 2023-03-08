@@ -23,6 +23,7 @@ import { Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
+
 function TaskCreate() {
 	const token = Auth.getTokenInfo();
 	// console.log({ token });
@@ -78,8 +79,9 @@ function TaskCreate() {
 			);
 			const { data } = await createTask({
 				variables: {
-					title,
-					description,
+					listId: window.localStorage.getItem('currentListId'),
+					taskTitle: title,
+					taskDescription: description,
 					dueDate,
 				},
 			});
@@ -220,13 +222,13 @@ function TaskCreate() {
 									<MenuItem value="">
 										<em>day</em>
 									</MenuItem>
-									<MenuItem value="monday">Monday</MenuItem>
-									<MenuItem value="tuesday">Tuesday</MenuItem>
-									<MenuItem value="wednesday">Wednesday</MenuItem>
-									<MenuItem value="thursday">Thursday</MenuItem>
-									<MenuItem value="friday">Friday</MenuItem>
-									<MenuItem value="saturday">Saturday</MenuItem>
-									<MenuItem value={"sunday"}>Sunday</MenuItem>
+									<MenuItem value="Monday">Monday</MenuItem>
+									<MenuItem value="Tuesday">Tuesday</MenuItem>
+									<MenuItem value="Wednesday">Wednesday</MenuItem>
+									<MenuItem value="Thursday">Thursday</MenuItem>
+									<MenuItem value="Friday">Friday</MenuItem>
+									<MenuItem value="Saturday">Saturday</MenuItem>
+									<MenuItem value="Sunday">Sunday</MenuItem>
 								</Select>
 							</FormControl>
 						</Grid>
