@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
+
 // importing pages
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -22,6 +23,8 @@ import ListCreate from "./pages/ListCreate";
 const httpLink = createHttpLink({
 	uri: "/graphql",
 });
+
+
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
