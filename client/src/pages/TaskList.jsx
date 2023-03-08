@@ -139,8 +139,6 @@ function TaskList() {
                     }}
                     key={index}
                   >
-                    {/* TODO: add logic here to loop over the lists array to create lists */}
-
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1bh-content"
@@ -153,7 +151,6 @@ function TaskList() {
                         {lst.taskRefreshDay}
                       </Typography>
                     </AccordionSummary>
-                    {/* TODO: add logic here to loop over the tasks array inside each list */}
                     {lst.tasks?.map((task) => {
                       return (
                         <AccordionDetails>
