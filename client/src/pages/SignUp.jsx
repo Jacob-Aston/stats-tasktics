@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CREATE_USER } from "../utils/graphQL/mutations.js";
 import { useMutation } from "@apollo/client";
+import Auth from '../utils/auth.js';
 
 import {
 	Grid,
@@ -70,6 +71,7 @@ function SignUp() {
 				},
 			});
 			console.log({ data });
+			Auth.login(data.addUser.token);
 		} catch (err) {
 			console.log("ran into an error");
 			console.error(err);

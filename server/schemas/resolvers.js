@@ -44,7 +44,9 @@ const resolvers = {
         addUser: async(parent, {email, username, password}) => 
         {
             const user = await User.create({email, username, password});
-            return user;
+            const token = signToken({email, username, id: user._id});
+            //send the token and user info back to the client
+            return { token , user};
         },
         //function prototyped off of 21Mern/22-Stu_Sign-JWT
         //this login mutation finds the user with specified email and password and returns a jwt token with the username, id and email 
@@ -58,7 +60,7 @@ const resolvers = {
             //if the password is incorrect throw an error
             if(!user.isCorrectPassword(password)) throw new AuthenticationError(errorMessage);
             //since the email and password belong to an account then create a jwt token with the email, username , and _id and send that back to the client
-            const token = signToken({email, username: user.username, id: user._id})
+            const token = signToken({email, username: user.username, id: user._id});
             //send the token and user info back to the client
             return { token , user};
         
