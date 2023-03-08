@@ -67,7 +67,7 @@ function Stats() {
 				{/* text and stats box  */}
 				<Paper elevation={7} sx={{ backgroundColor: "default.tan" }}>
 					{/* this is the heading that tells the user they are logged in.  */}
-					<Typography>
+					<Typography textAlign="center">
 						Hello {data.me.username}, welcome to Stat-tasktic
 					</Typography>
 					<Grid
