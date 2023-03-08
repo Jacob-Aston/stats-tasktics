@@ -10,6 +10,7 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  styled,
 } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
@@ -32,13 +33,10 @@ const styles = {
 function TaskList() {
   const token = Auth.getTokenInfo();
   // console.log({ token });
-  const { loading, data } = useQuery(QUERY_ME, 
-    { 
-      variables:
-      { offset: 0 },
-    fetchPolicy: 'network-only'
-    }
-  );
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { offset: 0 },
+    fetchPolicy: 'network-only',
+  });
   const navigate = useNavigate();
 
   // getting data from server
@@ -69,11 +67,48 @@ function TaskList() {
   };
 
   const handleAddTask = (listId) => {
-      //event.stopPropagation();
-      window.localStorage.setItem('currentListId', listId);
-      navigate('/taskcreate');
-  }
+    //event.stopPropagation();
+    window.localStorage.setItem('currentListId', listId);
+    navigate('/taskcreate');
+  };
 
+  const Paper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('xs')]: {
+      width: 500,
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 900,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 1200,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 1536,
+    },
+  }));
+
+  const Box = styled('div')(({ theme }) => ({
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('xs')]: {
+      width: 500,
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 900,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 1200,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 1536,
+    },
+  }));
 
   // if not logged in return to homepage
   if (!Auth.loggedIn()) {
@@ -107,7 +142,12 @@ function TaskList() {
       </Grid>
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
-        <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
+        <Paper
+          elevation={7}
+          sx={{
+            backgroundColor: 'default.tan',
+          }}
+        >
           <Typography textAlign="center">
             {data.me.username}'s task lists:
           </Typography>
@@ -141,7 +181,7 @@ function TaskList() {
 								/>
 							</Tabs>
 						</Box> */}
-            <Box>
+            <Box sx={{ width: Paper }}>
               {data.me.lists?.map((lst, index) => {
                 return (
                   <Accordion
@@ -164,9 +204,6 @@ function TaskList() {
                       <Typography sx={{ color: 'text.secondary' }}>
                         {lst.taskRefreshDay}
                       </Typography>
-                      <Button onClick={() => handleAddTask(lst._id)}>
-                          +
-                      </Button>
                     </AccordionSummary>
                     {lst.tasks?.map((task) => {
                       return (
@@ -182,6 +219,18 @@ function TaskList() {
                               }
                             />
                           </Box>
+                          <Button
+                            variant="contained"
+                            sx={{
+                              backgroundColor: 'default.gray',
+                              color: 'default.blue',
+                              margin: '.5rem',
+                              alignItems: 'right',
+                            }}
+                            onClick={() => handleAddTask(lst._id)}
+                          >
+                            +
+                          </Button>
                         </AccordionDetails>
                       );
                     })}
