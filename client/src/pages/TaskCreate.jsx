@@ -24,7 +24,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
 function TaskCreate() {
-	const token = Auth.getToken();
+	const token = Auth.getTokenInfo();
 	// console.log({ token });
 	const { loading, data } = useQuery(QUERY_ME);
 
@@ -33,6 +33,7 @@ function TaskCreate() {
 		event.preventDefault();
 		Auth.logout();
 	};
+
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [dueDate, setDueDate] = useState("");
@@ -41,12 +42,6 @@ function TaskCreate() {
 	const [createTask, { error }] = useMutation(CREATE_TASK);
 
 	// if not logged in return to homepage
-	if (!Auth.loggedIn()) {
-		return <Navigate to="/" />;
-	}
-	if (loading) {
-		return <div>Loading...</div>;
-	}
 
 	const handleInputChange = (e) => {
 		const { target } = e;
@@ -100,6 +95,14 @@ function TaskCreate() {
 		setDueDate("");
 	};
 
+	if (!Auth.loggedIn()) {
+		return <Navigate to="/" />;
+	}
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+
+
 	return (
 		<Grid
 			container
@@ -116,7 +119,7 @@ function TaskCreate() {
 				<Grid item>
 					<Drawer />
 				</Grid>
-				<Grid item marginLeft={2}>
+				<Grid item marginLeft={1}>
 					<Typography variant="h5" component="h4" color={"default.tan"}>
 						Stat-tasktic
 					</Typography>

@@ -30,8 +30,8 @@ const styles = {
 };
 
 function TaskList() {
-	const token = Auth.getToken();
-	//   console.log({ token });
+	const token = Auth.getTokenInfo();
+	// console.log({ token });
 	const { loading, data } = useQuery(QUERY_ME);
 
 	// getting data from server
@@ -49,6 +49,13 @@ function TaskList() {
 		event.preventDefault();
 		Auth.logout();
 	};
+
+	if (!Auth.loggedIn()) {
+		return <Navigate to="/" />;
+	}
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
@@ -78,7 +85,7 @@ function TaskList() {
 				<Grid item>
 					<Drawer />
 				</Grid>
-				<Grid item marginLeft={2}>
+				<Grid item marginLeft={1}>
 					<Typography variant="h5" component="h4" color={"default.tan"}>
 						Stat-tasktic
 					</Typography>

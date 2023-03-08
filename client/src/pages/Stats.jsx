@@ -57,7 +57,7 @@ function Stats() {
 				<Grid item>
 					<Drawer />
 				</Grid>
-				<Grid item marginLeft={2}>
+				<Grid item marginLeft={1}>
 					<Typography variant="h5" component="h4" color={"default.tan"}>
 						Stat-tasktic
 					</Typography>
