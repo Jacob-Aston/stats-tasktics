@@ -79,7 +79,7 @@ function App() {
 								<Route path="/tasklist" element={<TaskList />} />
 								<Route path="/listcreate" element={<ListCreate />} />
 								<Route path="/taskcreate" element={<TaskCreate />} />
-								<Route path="/*" element={<SignIn />} />
+								<Route path="*" element={<SignIn />} />
 							</Routes>
 						</div>
 					</div>
