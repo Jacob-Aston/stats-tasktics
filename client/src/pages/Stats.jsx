@@ -66,10 +66,11 @@ function Stats() {
 			<Grid item xs={1} marginY={1} marginX={1}>
 				{/* text and stats box  */}
 				<Paper elevation={7} sx={{ backgroundColor: "default.tan" }}>
-					{/* this is the heading that tells the user they are logged in.  */}
-					<Typography textAlign="center">
-						Hello {data.me.username}, welcome to Stat-tasktic
-					</Typography>
+					<Grid item marginBottom={3}>
+						<Typography textAlign="center">
+							Hello {data.me.username}, welcome to Stat-tasktic
+						</Typography>
+					</Grid>
 					<Grid
 						container
 						item
@@ -100,21 +101,33 @@ function Stats() {
 								/>
 							</Tabs>
 						</Box> */}
-						<BarChart />
-						<LineChart />
-						<Button
-							variant="contained"
-							sx={{
-								backgroundColor: "default.gray",
-								color: "default.blue",
-								margin: ".5rem",
-							}}
-							onClick={logout}
-						>
-							Sign Out
-						</Button>
+						<Grid item marginBottom={3} marginX={2}>
+							<BarChart />
+						</Grid>
+						<Grid item marginBottom={3}>
+							<LineChart />
+						</Grid>
 					</Grid>
 				</Paper>
+				<Grid
+					container
+					item
+					marginTop={3}
+					direction={"row"}
+					justifyContent={"center"}
+				>
+					<Button
+						variant="contained"
+						sx={{
+							backgroundColor: "default.gray",
+							color: "default.blue",
+							margin: ".5rem",
+						}}
+						onClick={logout}
+					>
+						Sign Out
+					</Button>
+				</Grid>
 			</Grid>
 		</Grid>
 	);
