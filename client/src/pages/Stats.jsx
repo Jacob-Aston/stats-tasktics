@@ -1,36 +1,26 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { Grid, Paper, Typography, Box, Button, Tabs, Tab } from "@mui/material";
-import logo from "../images/statslogoph.png";
+import { Grid, Paper, Typography, Button } from "@mui/material";
 import BarChart from "../charts/Bar";
 import LineChart from "../charts/Line";
 import Auth from "../utils/auth.js";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/graphQL/queries.js";
-// this makes the charts show up. Do not remove this.
 import Chart from "chart.js/auto";
 import Drawer from "../components/Drawer";
-
-const styles = {
-	img: {
-		width: "70px",
-		height: "115px",
-		paddingBottom: "20px",
-	},
-};
 
 function Stats() {
 	const token = Auth.getToken();
 	console.log({ token });
 	const { loading, data } = useQuery(QUERY_ME);
 
-	// logout of the account
+
 	const logout = (event) => {
 		event.preventDefault();
 		Auth.logout();
 	};
 
-	// if not logged in return to homepage
+
 	if (!Auth.loggedIn()) {
 		return <Navigate to="/" />;
 	}
@@ -40,7 +30,7 @@ function Stats() {
 	console.log("You are logged in!");
 	console.log({ token });
 	console.log({ data });
-	// container for the entire page
+
 	return (
 		<Grid
 			container
@@ -64,7 +54,7 @@ function Stats() {
 				</Grid>
 			</Grid>
 			<Grid item xs={1} marginY={1} marginX={1}>
-				{/* text and stats box  */}
+
 				<Paper elevation={7} sx={{ backgroundColor: "default.tan" }}>
 					<Grid item marginBottom={3}>
 						<Typography textAlign="center">
@@ -78,29 +68,7 @@ function Stats() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						{/* This is the tab-bar for Stats and Tasks  */}
-						{/* <Box
-							sx={{
-								borderBottom: 1,
-								borderColor: "divider",
-								color: "default.gray",
-							}}
-						>
-							<Tabs value="Stats" variant="fullWidth">
-								<Tab label="Stats" value="Stats" />
-								<Tab label="Task Lists" value="Tasks" href="/tasklist" />
-								<Tab
-									label="Create List"
-									value="Create List"
-									href="/listcreate"
-								/>
-								<Tab
-									label="Create Task"
-									value="Create Task"
-									href="/taskcreate"
-								/>
-							</Tabs>
-						</Box> */}
+
 						<Grid item marginBottom={3} marginX={2}>
 							<BarChart />
 						</Grid>

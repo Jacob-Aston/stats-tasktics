@@ -7,9 +7,6 @@ import {
 	TextField,
 	Button,
 	Alert,
-	Box,
-	Tab,
-	Tabs,
 	Select,
 	MenuItem,
 	InputLabel,
@@ -24,10 +21,9 @@ import { CREATE_LIST } from "../utils/graphQL/mutations.js";
 
 function ListCreate() {
 	const token = Auth.getTokenInfo();
-	// console.log({ token });
+
 	const { loading, data } = useQuery(QUERY_ME);
 
-	// logout of the account
 	const logout = (event) => {
 		event.preventDefault();
 		Auth.logout();
@@ -39,7 +35,6 @@ function ListCreate() {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [createList, { error }] = useMutation(CREATE_LIST);
 
-	// if not logged in return to homepage
 	if (!Auth.loggedIn()) {
 		return <Navigate to="/" />;
 	}
@@ -51,8 +46,6 @@ function ListCreate() {
 		const { target } = e;
 		const inputType = target.name;
 		const inputValue = target.value;
-		// const handleChange =
-		// 	setDueDate(e.target.value);
 
 		if (inputType === "listTitle") {
 			setListTitle(inputValue);
@@ -136,24 +129,6 @@ function ListCreate() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						{/* <Box
-							sx={{
-								borderBottom: 1,
-								borderColor: "divider",
-								color: "default.gray",
-							}}
-						>
-							<Tabs value="Create List" variant="fullWidth">
-								<Tab label="Stats" value="Stats" href="/stats" />
-								<Tab label="Task Lists" value="Task Lists" href="/tasklist" />
-								<Tab label="Create List" value="Create List" />
-								<Tab
-									label="Create Task"
-									value="Create Task"
-									href="/taskcreate"
-								/>
-							</Tabs>
-						</Box> */}
 						<Grid item marginY={2} marginX={3}>
 							<Typography variant="h3" component="h2" textAlign={"center"}>
 								Create a list:
