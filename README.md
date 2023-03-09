@@ -28,7 +28,8 @@ N/A
 
 Keep track of various tasks and understand performance over time.
 
-<!-- TODO: add link here of working app.  -->
+link: https://stat-tasktics.herokuapp.com/
+repo: https://github.com/Jacob-Aston/stats-tasktics
 
 ![Screenshot](./screenshot.png)
 
@@ -38,6 +39,10 @@ Brent Keller: https://github.com/bikeller104
 Jacob Aston: https://github.com/Jacob-Aston
 Matt Thurn: https://github.com/MattThurn
 Ryan Cottle: https://github.com/rtcottle
+
+Material-UI: https://mui.com/
+React-charts2: https://react-chartjs-2.js.org/
+Apollo: https://www.apollographql.com/
 
 ## License
 
