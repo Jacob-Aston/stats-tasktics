@@ -74,9 +74,12 @@ function TaskList() {
 
   const Paper = styled('div')(({ theme }) => ({
     padding: theme.spacing(1),
-    [theme.breakpoints.up('xs')]: {
-      width: 500,
-    },
+    // [theme.breakpoints.up('xs')]: {
+    //   width: 400,
+    // },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: 500,
+    // },
     [theme.breakpoints.up('sm')]: {
       width: 600,
     },
@@ -93,9 +96,9 @@ function TaskList() {
 
   const Box = styled('div')(({ theme }) => ({
     padding: theme.spacing(1),
-    [theme.breakpoints.up('xs')]: {
-      width: 500,
-    },
+    // [theme.breakpoints.up('xs')]: {
+    //   width: 500,
+    // },
     [theme.breakpoints.up('sm')]: {
       width: 600,
     },
@@ -146,6 +149,7 @@ function TaskList() {
           elevation={7}
           sx={{
             backgroundColor: 'default.tan',
+            width: '300px',
           }}
         >
           <Typography textAlign="center">
@@ -181,7 +185,7 @@ function TaskList() {
 								/>
 							</Tabs>
 						</Box> */}
-            <Box sx={{ width: Paper }}>
+            <Box sx={{ width: '300px' }}>
               {data.me.lists?.map((lst, index) => {
                 return (
                   <Accordion
@@ -219,18 +223,26 @@ function TaskList() {
                               }
                             />
                           </Box>
-                          <Button
-                            variant="contained"
+                          <Box
                             sx={{
-                              backgroundColor: 'default.gray',
-                              color: 'default.blue',
-                              margin: '.5rem',
-                              alignItems: 'right',
+                              margin: '1rem',
+                              display: 'flex',
+                              // justifyContent: 'flex-end',
+                              // alignItems: 'flex-end',
                             }}
-                            onClick={() => handleAddTask(lst._id)}
                           >
-                            +
-                          </Button>
+                            <Button
+                              variant="contained"
+                              sx={{
+                                backgroundColor: 'default.gray',
+                                color: 'default.blue',
+                                margin: '.5rem',
+                              }}
+                              onClick={() => handleAddTask(lst._id)}
+                            >
+                              +
+                            </Button>
+                          </Box>
                         </AccordionDetails>
                       );
                     })}
