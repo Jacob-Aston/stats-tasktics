@@ -100,7 +100,14 @@ const resolvers = {
     },
     completeTask: async (parent, { id: taskId }) => {
       const task = await Task.findOne({ taskId });
-      await Task.findOneAndUpdate({ taskId }, { ...task, completed: true });
+      console.log(task, 'server task');
+      const newTask = await Task.findOneAndUpdate(
+        { taskId },
+        { completed: true },
+        { new: true }
+      );
+      console.log(newTask, 'new task from sever');
+      return newTask;
     },
     updateTask: async (
       parent,
