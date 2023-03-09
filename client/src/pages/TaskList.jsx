@@ -10,11 +10,13 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  styled,
 } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/graphQL/queries.js';
+import { COMPLETE_TASK } from '../utils/graphQL/mutations';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -32,13 +34,10 @@ const styles = {
 function TaskList() {
   const token = Auth.getTokenInfo();
   // console.log({ token });
-  const { loading, data } = useQuery(QUERY_ME, 
-    { 
-      variables:
-      { offset: 0 },
-    fetchPolicy: 'network-only'
-    }
-  );
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { offset: 0 },
+    fetchPolicy: 'network-only',
+  });
   const navigate = useNavigate();
 
   // getting data from server
@@ -47,7 +46,19 @@ function TaskList() {
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
   // console.log({ complete });
-  const handleComplete = (event) => {
+  const [completeTask] = useMutation(COMPLETE_TASK, {});
+  const HandleComplete = async (event) => {
+    const targetId = event.target.getAttribute('id');
+    console.log(targetId);
+    try {
+      const { data } = await completeTask({
+        variables: {
+          taskId: targetId,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
     setComplete(event.target.checked);
   };
 
@@ -69,11 +80,42 @@ function TaskList() {
   };
 
   const handleAddTask = (listId) => {
-      //event.stopPropagation();
-      window.localStorage.setItem('currentListId', listId);
-      navigate('/taskcreate');
-  }
+    //event.stopPropagation();
+    window.localStorage.setItem('currentListId', listId);
+    navigate('/taskcreate');
+  };
 
+  const Paper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 900,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 1200,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 1536,
+    },
+  }));
+
+  const Box = styled('div')(({ theme }) => ({
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 900,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 1200,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 1536,
+    },
+  }));
 
   // if not logged in return to homepage
   if (!Auth.loggedIn()) {
@@ -107,7 +149,13 @@ function TaskList() {
       </Grid>
       <Grid item xs={1} marginY={4} marginX={1}>
         {/* text and stats box  */}
-        <Paper elevation={7} sx={{ backgroundColor: 'default.tan' }}>
+        <Paper
+          elevation={7}
+          sx={{
+            backgroundColor: 'default.tan',
+            width: '300px',
+          }}
+        >
           <Typography textAlign="center">
             {data.me.username}'s task lists:
           </Typography>
@@ -141,12 +189,12 @@ function TaskList() {
 								/>
 							</Tabs>
 						</Box> */}
-            <Box>
+            <Box sx={{ width: '300px' }}>
               {data.me.lists?.map((lst, index) => {
                 return (
                   <Accordion
-                    expanded={expanded === 'panel1'}
-                    onChange={handleChange('panel1')}
+                    expanded={expanded === `${data.me.lists[index].listTitle}`}
+                    onChange={handleChange(`${data.me.lists[index].listTitle}`)}
                     sx={{
                       backgroundcolor: 'default.blue',
                       color: 'default.gray',
@@ -162,10 +210,19 @@ function TaskList() {
                         {lst.listTitle}
                       </Typography>
                       <Typography sx={{ color: 'text.secondary' }}>
-                        {lst.taskRefreshDay}
+                        Refresh Day: {lst.taskRefreshDay}
                       </Typography>
-                      <Button onClick={() => handleAddTask(lst._id)}>
-                          +
+                      <Button
+                        variant="contained"
+                        sx={{
+                          backgroundColor: 'default.gray',
+                          color: 'default.blue',
+                          margin: '.5rem',
+                          ml: '4rem',
+                        }}
+                        onClick={() => handleAddTask(lst._id)}
+                      >
+                        +
                       </Button>
                     </AccordionSummary>
                     {lst.tasks?.map((task) => {
@@ -177,7 +234,8 @@ function TaskList() {
                               control={
                                 <Checkbox
                                   checked={task.completed}
-                                  onChange={handleComplete}
+                                  onChange={HandleComplete}
+                                  id={task._id}
                                 />
                               }
                             />
