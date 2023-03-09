@@ -145,7 +145,7 @@ function SignIn() {
 								variant="contained"
 								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 							>
-								<Link to="/stats" component={RouterLink} underline="hover">
+								<Link underline="none" to="/stats" component={RouterLink}>
 									Submit
 								</Link>
 							</Button>
