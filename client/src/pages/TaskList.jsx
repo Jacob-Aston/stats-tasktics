@@ -46,7 +46,10 @@ function TaskList() {
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
   // console.log({ complete });
-  const [completeTask] = useMutation(COMPLETE_TASK, {});
+  const [completeTask] = useMutation(COMPLETE_TASK, {
+    variables: { offset: 0 },
+    fetchPolicy: 'network-only',
+  });
   const HandleComplete = async (event) => {
     const targetId = event.target.getAttribute('id');
     console.log(targetId);
@@ -60,6 +63,7 @@ function TaskList() {
       console.error(error);
     }
     setComplete(event.target.checked);
+    // window.location.reload();
   };
 
   // logout of the account
