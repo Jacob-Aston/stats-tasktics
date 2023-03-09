@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CREATE_USER } from "../utils/graphQL/mutations.js";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth.js";
-// import { useNavigate } from "react-router-dom";
+
 import { Link as RouterLink } from "react-router-dom";
 
 import {
@@ -83,7 +83,7 @@ function SignUp() {
 		setUserName("");
 		setPassword("");
 		setEmail("");
-		// navigate("/stats");
+
 	};
 
 	return (
