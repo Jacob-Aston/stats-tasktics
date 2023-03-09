@@ -1,16 +1,46 @@
 [
     {
-        "_id": "640386270087e5a3be1444a3",
-        "title": "testSeedTask",
-        "description": "testSeedTask description",
-        "dueDate": "Monday"
+        "_id": "640386270087e5a3be1444b1",
+        "title": "Clean car",
+        "description": "Clean er' good.",
+        "dueDate": "Monday",
+        "finishTime": 1678322512663,
+        "completed": true
     },
     {
-        "_id": "640386270087e5a3be1444a9",
-        "title": "testPetTask",
-        "description": "description",
-        "dueDate": "Monday",
-        "startTime": 1678157694477,
-        "finishTime": 1678157680001
+        "_id": "640386270087e5a3be1444b2",
+        "title": "Brush the cow",
+        "description": "Watch out for the horns.",
+        "dueDate": "Wednesday",
+        "finishTime": 1678300912663,
+        "completed": true
+    },
+    {
+        "_id": "640386270087e5a3be1444b3",
+        "title": "Bathe the cat",
+        "description": "Timmy likes the water warm.",
+        "dueDate": "Friday"
+    },
+    {
+        "_id": "640386270087e5a3be1444b4",
+        "title": "Feed the ducks",
+        "description": "If you go the the store. You can find the bread near the entrance. There are lots of ducks at the park. I bet they are hungry.",
+        "dueDate": "Tuesday",
+        "finishTime": 1678157680001,
+        "completed": true
+    },
+    {
+        "_id": "640386270087e5a3be1444b5",
+        "title": "Empty the trash",
+        "description": "Keep up the good work :).",
+        "dueDate": "Saturday"
+    },
+    {
+        "_id": "640386270087e5a3be1444b6",
+        "title": "Walk the llama",
+        "description": "LLAMA",
+        "dueDate": "Tuesday",
+        "finishTime": 1678149712663,
+        "completed": true
     }
 ]

@@ -3,12 +3,12 @@
         "_id": "640386270087e5a3be1444a1",
         "listTitle": "Chores",
         "taskRefreshDay": "Sunday",
-        "tasks": ["640386270087e5a3be1444a9"]
+        "tasks": ["640386270087e5a3be1444b1", "640386270087e5a3be1444b5"]
     },
     {
         "_id": "640386270087e5a3be1444a2",
-        "listTitle": "Plants",
+        "listTitle": "Pets",
         "taskRefreshDay": "Monday",
-        "tasks": ["640386270087e5a3be1444a3"]
+        "tasks": ["640386270087e5a3be1444b2", "640386270087e5a3be1444b3", "640386270087e5a3be1444b4", "640386270087e5a3be1444b6"]
     }
 ]
