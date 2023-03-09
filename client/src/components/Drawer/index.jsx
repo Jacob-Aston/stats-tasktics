@@ -61,14 +61,6 @@ export default function TemporaryDrawer() {
 					<ListItemText primary="Create List" />
 				</ListItem>
 			</List>
-			<List>
-				<ListItem component={Link} to="/taskcreate">
-					<ListItemIcon>
-						<AddTaskIcon />
-					</ListItemIcon>
-					<ListItemText primary="Create Task" />
-				</ListItem>
-			</List>
 			<Divider />
 		</Box>
 	);
