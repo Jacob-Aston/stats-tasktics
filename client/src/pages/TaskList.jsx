@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
   Grid,
   Paper,
@@ -170,29 +171,6 @@ function TaskList() {
             justifyContent="center"
             alignItems="center"
           >
-            {/* This is the tab-bar for Stats and Tasks  */}
-            {/* <Box
-							sx={{
-								borderBottom: 1,
-								borderColor: "divider",
-								color: "default.gray",
-							}}
-						>
-							<Tabs value="Task Lists" variant="fullWidth">
-								<Tab label="Stats" value="Stats" href="/stats" />
-								<Tab label="Task Lists" value="Task Lists" />
-								<Tab
-									label="Create List"
-									value="Create List"
-									href="/listcreate"
-								/>
-								<Tab
-									label="Create Task"
-									value="Create Task"
-									href="/taskcreate"
-								/>
-							</Tabs>
-						</Box> */}
             <Box sx={{ width: '300px' }}>
               {data.me.lists?.map((lst, index) => {
                 return (
