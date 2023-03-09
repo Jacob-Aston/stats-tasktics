@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import {
 	Grid,
 	Paper,
@@ -13,13 +14,13 @@ import {
 	MenuItem,
 	InputLabel,
 	FormControl,
+	Link,
 } from "@mui/material";
 import logo from "../images/statslogoph.png";
 import Drawer from "../components/Drawer";
 import Auth from "../utils/auth.js";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/graphQL/queries.js";
-import { Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
@@ -33,6 +34,7 @@ function TaskCreate() {
 		event.preventDefault();
 		Auth.logout();
 	};
+	const navigate = useNavigate();
 
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -94,6 +96,7 @@ function TaskCreate() {
 		setTitle("");
 		setDescription("");
 		setDueDate("");
+		navigate("/tasklist");
 	};
 
 	if (!Auth.loggedIn()) {

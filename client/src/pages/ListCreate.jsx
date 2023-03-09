@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import {
 	Grid,
 	Paper,
@@ -18,7 +19,6 @@ import Auth from "../utils/auth.js";
 import Drawer from "../components/Drawer";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/graphQL/queries.js";
-import { Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_LIST } from "../utils/graphQL/mutations.js";
 
@@ -32,6 +32,8 @@ function ListCreate() {
 		event.preventDefault();
 		Auth.logout();
 	};
+	const navigate = useNavigate();
+
 	const [listTitle, setListTitle] = useState("");
 	const [taskRefreshDay, setTaskRefreshDay] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -88,6 +90,7 @@ function ListCreate() {
 
 		setListTitle("");
 		setTaskRefreshDay("");
+		navigate("/tasklist");
 	}
 
 	return (
