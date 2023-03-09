@@ -28,10 +28,10 @@ function ListCreate() {
 	const { loading, data } = useQuery(QUERY_ME);
 
 	// logout of the account
-	// const logout = (event) => {
-	// 	event.preventDefault();
-	// 	Auth.logout();
-	// };
+	const logout = (event) => {
+		event.preventDefault();
+		Auth.logout();
+	};
 	const [listTitle, setListTitle] = useState("");
 	const [taskRefreshDay, setTaskRefreshDay] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -210,6 +210,25 @@ function ListCreate() {
 						</Grid>
 					</Grid>
 				</Paper>
+				<Grid
+					container
+					item
+					marginTop={3}
+					direction={"row"}
+					justifyContent={"center"}
+				>
+					<Button
+						variant="contained"
+						sx={{
+							backgroundColor: "default.gray",
+							color: "default.blue",
+							margin: ".5rem",
+						}}
+						onClick={logout}
+					>
+						Sign Out
+					</Button>
+				</Grid>
 			</Grid>
 		</Grid>
 	);

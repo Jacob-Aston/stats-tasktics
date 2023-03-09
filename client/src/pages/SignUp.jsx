@@ -13,6 +13,7 @@ import {
 	Button,
 	Box,
 	Alert,
+	Link,
 } from "@mui/material";
 
 import logo from "../images/statslogoph.png";
@@ -75,7 +76,6 @@ function SignUp() {
 			});
 			console.log({ data });
 			Auth.login(data.addUser.token);
-			
 		} catch (err) {
 			console.log("ran into an error");
 			console.error(err);
@@ -173,15 +173,20 @@ function SignUp() {
 							/>
 						</Box>
 						<Box marginY={3} paddingTop={2} align="center">
-							<Button
-								variant="contained"
-								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
-								onClick={handleFormSubmit}
-								to="/stats"
-								component={RouterLink}
-							>
-								Submit
-							</Button>
+							<Link to="/stats" component={RouterLink} underline="hover">
+								<Button
+									variant="contained"
+									sx={{
+										backgroundColor: "default.gray",
+										color: "default.blue",
+									}}
+									onClick={handleFormSubmit}
+									component={RouterLink}
+									to="/stats"
+								>
+									Submit
+								</Button>
+							</Link>
 						</Box>
 					</Grid>
 				</Paper>

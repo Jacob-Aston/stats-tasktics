@@ -23,7 +23,6 @@ import { Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
-
 function TaskCreate() {
 	const token = Auth.getTokenInfo();
 	// console.log({ token });
@@ -79,7 +78,7 @@ function TaskCreate() {
 			);
 			const { data } = await createTask({
 				variables: {
-					listId: window.localStorage.getItem('currentListId'),
+					listId: window.localStorage.getItem("currentListId"),
 					taskTitle: title,
 					taskDescription: description,
 					dueDate,
@@ -103,7 +102,6 @@ function TaskCreate() {
 	if (loading) {
 		return <div>Loading...</div>;
 	}
-
 
 	return (
 		<Grid
@@ -243,7 +241,13 @@ function TaskCreate() {
 						</Grid>
 					</Grid>
 				</Paper>
-				<Grid container item direction={"row"} justifyContent={"center"}>
+				<Grid
+					container
+					item
+					marginTop={3}
+					direction={"row"}
+					justifyContent={"center"}
+				>
 					<Button
 						variant="contained"
 						sx={{
