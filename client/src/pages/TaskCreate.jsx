@@ -6,15 +6,11 @@ import {
 	Typography,
 	TextField,
 	Button,
-	Box,
-	Tab,
-	Tabs,
 	Alert,
 	Select,
 	MenuItem,
 	InputLabel,
 	FormControl,
-	Link,
 } from "@mui/material";
 import logo from "../images/statslogoph.png";
 import Drawer from "../components/Drawer";
@@ -26,10 +22,10 @@ import { CREATE_TASK } from "../utils/graphQL/mutations.js";
 
 function TaskCreate() {
 	const token = Auth.getTokenInfo();
-	// console.log({ token });
+
 	const { loading, data } = useQuery(QUERY_ME);
 
-	// logout of the account
+
 	const logout = (event) => {
 		event.preventDefault();
 		Auth.logout();
@@ -39,18 +35,17 @@ function TaskCreate() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [dueDate, setDueDate] = useState("");
-	// const [password, setPassword] = useState("");
+
 	const [errorMessage, setErrorMessage] = useState("");
 	const [createTask, { error }] = useMutation(CREATE_TASK);
 
-	// if not logged in return to homepage
+
 
 	const handleInputChange = (e) => {
 		const { target } = e;
 		const inputType = target.name;
 		const inputValue = target.value;
-		// const handleChange =
-		// 	setDueDate(e.target.value);
+
 
 		if (inputType === "title") {
 			setTitle(inputValue);
@@ -149,24 +144,6 @@ function TaskCreate() {
 						justifyContent="center"
 						alignItems="center"
 					>
-						{/* <Box
-							sx={{
-								borderBottom: 1,
-								borderColor: "divider",
-								color: "default.gray",
-							}}
-						>
-							<Tabs value="Create Task" variant="fullWidth">
-								<Tab label="Stats" value="Stats" href="/stats" />
-								<Tab label="Task Lists" value="Task Lists" href="/tasklist" />
-								<Tab
-									label="Create List"
-									value="Create List"
-									href="/listcreate"
-								/>
-								<Tab label="Create Task" value="Create Task" />
-							</Tabs>
-						</Box> */}
 						<Grid item marginY={2} marginX={3}>
 							<Typography variant="h3" component="h2" textAlign={"center"}>
 								Create a task:

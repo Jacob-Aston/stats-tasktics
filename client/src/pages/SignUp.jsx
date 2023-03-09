@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import { CREATE_USER } from "../utils/graphQL/mutations.js";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth.js";
-// import { useNavigate } from "react-router-dom";
+
 import { Link as RouterLink } from "react-router-dom";
 
 import {
@@ -13,6 +14,7 @@ import {
 	Button,
 	Box,
 	Alert,
+	Link,
 } from "@mui/material";
 
 import logo from "../images/statslogoph.png";
@@ -49,6 +51,8 @@ function SignUp() {
 		}
 	};
 
+	const navigate = useNavigate();
+
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 
@@ -83,7 +87,7 @@ function SignUp() {
 		setUserName("");
 		setPassword("");
 		setEmail("");
-		// navigate("/stats");
+		navigate("/stats");
 	};
 
 	return (
@@ -174,13 +178,8 @@ function SignUp() {
 						<Box marginY={3} paddingTop={2} align="center">
 							<Button
 								variant="contained"
-								sx={{
-									backgroundColor: "default.gray",
-									color: "default.blue",
-								}}
+								sx={{ backgroundColor: "default.gray", color: "default.blue" }}
 								onClick={handleFormSubmit}
-								component={RouterLink}
-								to="/stats"
 							>
 								Submit
 							</Button>
