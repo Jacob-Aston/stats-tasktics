@@ -180,8 +180,8 @@ function TaskList() {
               {data.me.lists?.map((lst, index) => {
                 return (
                   <Accordion
-                    expanded={expanded === 'panel1'}
-                    onChange={handleChange('panel1')}
+                    expanded={expanded === `${data.me.lists[index].listTitle}`}
+                    onChange={handleChange(`${data.me.lists[index].listTitle}`)}
                     sx={{
                       backgroundcolor: 'default.blue',
                       color: 'default.gray',
@@ -197,8 +197,19 @@ function TaskList() {
                         {lst.listTitle}
                       </Typography>
                       <Typography sx={{ color: 'text.secondary' }}>
-                        {lst.taskRefreshDay}
+                        Refresh Day: {lst.taskRefreshDay}
                       </Typography>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          backgroundColor: 'default.gray',
+                          color: 'default.blue',
+                          margin: '.5rem',
+                        }}
+                        onClick={() => handleAddTask(lst._id)}
+                      >
+                        +
+                      </Button>
                     </AccordionSummary>
                     {lst.tasks?.map((task) => {
                       return (
@@ -213,19 +224,6 @@ function TaskList() {
                                 />
                               }
                             />
-                          </Box>
-                          <Box>
-                            <Button
-                              variant="contained"
-                              sx={{
-                                backgroundColor: 'default.gray',
-                                color: 'default.blue',
-                                margin: '.5rem',
-                              }}
-                              onClick={() => handleAddTask(lst._id)}
-                            >
-                              +
-                            </Button>
                           </Box>
                         </AccordionDetails>
                       );
