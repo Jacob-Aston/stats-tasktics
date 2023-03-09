@@ -74,12 +74,6 @@ function TaskList() {
 
   const Paper = styled('div')(({ theme }) => ({
     padding: theme.spacing(1),
-    // [theme.breakpoints.up('xs')]: {
-    //   width: 400,
-    // },
-    // [theme.breakpoints.down('sm')]: {
-    //   width: 500,
-    // },
     [theme.breakpoints.up('sm')]: {
       width: 600,
     },
@@ -96,9 +90,6 @@ function TaskList() {
 
   const Box = styled('div')(({ theme }) => ({
     padding: theme.spacing(1),
-    // [theme.breakpoints.up('xs')]: {
-    //   width: 500,
-    // },
     [theme.breakpoints.up('sm')]: {
       width: 600,
     },
@@ -223,14 +214,7 @@ function TaskList() {
                               }
                             />
                           </Box>
-                          <Box
-                            sx={{
-                              margin: '1rem',
-                              display: 'flex',
-                              // justifyContent: 'flex-end',
-                              // alignItems: 'flex-end',
-                            }}
-                          >
+                          <Box>
                             <Button
                               variant="contained"
                               sx={{
