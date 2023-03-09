@@ -14,8 +14,9 @@ import {
 } from '@mui/material';
 import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/graphQL/queries.js';
+import { COMPLETE_TASK } from '../utils/graphQL/mutations';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -45,7 +46,19 @@ function TaskList() {
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
   // console.log({ complete });
-  const handleComplete = (event) => {
+  const [completeTask] = useMutation(COMPLETE_TASK, {});
+  const HandleComplete = async (event) => {
+    const targetId = event.target.getAttribute('id');
+    console.log(targetId);
+    try {
+      const { data } = await completeTask({
+        variables: {
+          taskId: targetId,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
     setComplete(event.target.checked);
   };
 
@@ -205,6 +218,7 @@ function TaskList() {
                           backgroundColor: 'default.gray',
                           color: 'default.blue',
                           margin: '.5rem',
+                          ml: '4rem',
                         }}
                         onClick={() => handleAddTask(lst._id)}
                       >
@@ -220,7 +234,8 @@ function TaskList() {
                               control={
                                 <Checkbox
                                   checked={task.completed}
-                                  onChange={handleComplete}
+                                  onChange={HandleComplete}
+                                  id={task._id}
                                 />
                               }
                             />
