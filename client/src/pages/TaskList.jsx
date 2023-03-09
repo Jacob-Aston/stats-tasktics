@@ -16,12 +16,14 @@ import logo from '../images/statslogoph.png';
 import Auth from '../utils/auth.js';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/graphQL/queries.js';
-import { COMPLETE_TASK } from '../utils/graphQL/mutations';
+import { COMPLETE_TASK, DELETE_TASK } from '../utils/graphQL/mutations';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Drawer from '../components/Drawer';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 
 const styles = {
   img: {
@@ -42,6 +44,7 @@ function TaskList() {
 
   // getting data from server
   console.log({ data });
+  const [deleteTask, { error }] = useMutation(DELETE_TASK);
 
   const [expanded, setExpanded] = React.useState(false);
   const [complete, setComplete] = React.useState(false);
@@ -87,6 +90,19 @@ function TaskList() {
     //event.stopPropagation();
     window.localStorage.setItem('currentListId', listId);
     navigate('/taskcreate');
+  };
+
+  const handleDeleteTask = async (listId, taskId) => {
+    try {
+      await deleteTask({
+        variables: {
+          listId: listId,
+          taskId: taskId,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const Paper = styled('div')(({ theme }) => ({
@@ -226,24 +242,45 @@ function TaskList() {
                         }}
                         onClick={() => handleAddTask(lst._id)}
                       >
-                        +
+                        <AddIcon />
                       </Button>
                     </AccordionSummary>
                     {lst.tasks?.map((task) => {
                       return (
                         <AccordionDetails>
-                          <Box>
-                            <FormControlLabel
-                              label={task.title}
-                              control={
-                                <Checkbox
-                                  checked={task.completed}
-                                  onChange={HandleComplete}
-                                  id={task._id}
-                                />
-                              }
-                            />
-                          </Box>
+                          <Grid
+                            container
+                            direction="row"
+                            justifyContent="space-between"
+                          >
+                            <Grid item>
+                              <FormControlLabel
+                                label={task.title}
+                                control={
+                                  <Checkbox
+                                    checked={task.completed}
+                                    onChange={HandleComplete}
+                                    id={task._id}
+                                  />
+                                }
+                              />
+                            </Grid>
+                            <Grid item>
+                              <Button
+                                variant="contained"
+                                sx={{
+                                  backgroundColor: 'default.gray',
+                                  color: 'default.blue',
+                                  margin: '.5rem',
+                                }}
+                                onClick={() =>
+                                  handleDeleteTask(lst._id, task._id)
+                                }
+                              >
+                                <DeleteIcon />
+                              </Button>
+                            </Grid>
+                          </Grid>
                         </AccordionDetails>
                       );
                     })}
