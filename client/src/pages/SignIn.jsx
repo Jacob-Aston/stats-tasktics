@@ -57,10 +57,9 @@ function SignIn() {
 		try {
 			const { data } = await login({ variables: { email, password } });
 			console.log({ data });
-			//console.log("attempt to login")
+
 			Auth.login(data.login.token);
-			//console.log("print the token info");
-			//console.log(Auth.getTokenInfo());
+
 		} catch (err) {
 			console.error(err);
 		}
